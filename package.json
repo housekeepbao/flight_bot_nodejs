@@ -1,0 +1,23 @@
+{
+  "name": "flight_bot_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@line/bot-sdk": "^6.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/housekeepbao/flight_bot_nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/housekeepbao/flight_bot_nodejs/issues"
+  },
+  "homepage": "https://github.com/housekeepbao/flight_bot_nodejs#readme"
+}
