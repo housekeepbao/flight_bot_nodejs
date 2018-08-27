@@ -10,6 +10,7 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict,eve
         var tickets_text = "請輸入您的行動電話號碼 例如:09123456789"
         tmp_list.push("ask_session_start")
         ask_member_Info_session_dict.push({user_key:tmp_list})
-        return user_key,tickets_text
+        const push_text = { type: 'text', text: tickets_text };
+        return user_key,push_text 
     }
 }
