@@ -1,16 +1,5 @@
 'use strict';
-import {
-  // webhook event objects
-  WebhookEvent,
-  MessageEvent,
-  EventSource,
-  VideoEventMessage,
 
-  // message event objects
-  Message,
-  TemplateMessage,
-  TemplateContent,
-} from "@line/bot-sdk";
 
 const line = require('@line/bot-sdk');
 const express = require('express');
