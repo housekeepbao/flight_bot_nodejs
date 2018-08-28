@@ -89,7 +89,7 @@ module.exports.isFirstLogin = function (user_key,callback) {
     })
         .then(function (response) {
             console.log('isFirstLogin',response.data )
-            if(response.data != []) {
+            if(response.data.length >= 1) {
                 callback(false) 
             }
             else {

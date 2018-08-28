@@ -95,7 +95,7 @@ function handleText(message, event) {
   console.log('#MessageEvent#')
   console.log(event)
   var user_key = event.source.userId
-  if ( user_key in ask_member_Info_session_dict  && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
+  if ( !(user_key in ask_member_Info_session_dict)  && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
     dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
       if (isFinish != true) {
         ask_member_Info_session_dict = session_dict
@@ -245,8 +245,8 @@ function follow_Event(event) {
     api.isFirstLogin(user_key, function (isFirstLoginFlag) {
       if (isFirstLoginFlag) {
         var message_text_tmp = "Hi " + user.displayName + "\n"
-        message_text_tmp += "歡迎加入FlightGo!!\n\n"
-        message_text_tmp += "可以使用FlightGo 來查詢機票。\n有任何問題也可直接詢問客服，FlightGo會立即通知真人客服來為您服務喔\n\n"
+        message_text_tmp += "歡迎加入FlightGo 旅行社!!\n\n"
+        message_text_tmp += "，我是旅遊小幫手:小高。\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知我老大來為您服務喔\n\n"
         message_text_tmp += "可以從選單內點選如何使用來獲取功能說明喔\n\n"
         message_text_tmp += "為了提供更好的服務，請先填入以下基本資訊~"
         var message = { type: 'text', text: message_text_tmp }
@@ -258,7 +258,15 @@ function follow_Event(event) {
           stickerId: '4'
         }
         lineapi.replyText(event, [message, message_slicker])
-
+        dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
+          if (isFinish != true) {
+            ask_member_Info_session_dict = session_dict
+          }
+          else {
+            ask_member_Info_session_dict = session_dict
+            ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
+          }
+        })
       }
     }
     )
