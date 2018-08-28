@@ -6,9 +6,9 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
     if (user_key in ask_member_Info_session_dict) {
         ask_member_Info_session_dict[user_key] = ["ask_session_start"]
     }
-    console.log('Dialog Session length', ask_member_Info_session_dict[user_key].lenght)
+    console.log('Dialog Session length', ask_member_Info_session_dict[user_key].length)
     console.log('Dialog Session content', ask_member_Info_session_dict[user_key])
-    if (ask_member_Info_session_dict[user_key].lenght === 1) {
+    if (ask_member_Info_session_dict[user_key].length === 1) {
         var tmp_list = ask_member_Info_session_dict[user_key]
         var tickets_text = "請輸入您的行動電話號碼 例如:09123456789"
         tmp_list.push("ask_session_start")
@@ -16,7 +16,7 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
         var push_text = { type: 'text', text: tickets_text };
         lineapi.pushText(user_key, push_text)
     }
-    else if (ask_member_Info_session_dict[user_key].lenght === 2) {
+    else if (ask_member_Info_session_dict[user_key].length === 2) {
         var tmp_list = ask_member_Info_session_dict[user_key]
         var message = event.message.text
         var re = /\d+/
@@ -33,7 +33,7 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
         lineapi.pushText(user_key, push_text)
 
     }
-    else if (ask_member_Info_session_dict[user_key].lenght === 3) {
+    else if (ask_member_Info_session_dict[user_key].length === 3) {
         var tmp_list = ask_member_Info_session_dict[user_key]
         var message = event.message.text
         var re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
@@ -72,7 +72,7 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
         }
         lineapi.pushText(user_key, push_text)
     }
-    else if (ask_member_Info_session_dict[user_key].lenght === 4) {
+    else if (ask_member_Info_session_dict[user_key].length === 4) {
         var tmp_list = ask_member_Info_session_dict[user_key]
         var message = event.message.text
         if (message.indexOf("男性") != -1 || message.indexOf("女性")) {

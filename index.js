@@ -246,7 +246,7 @@ function follow_Event(event) {
       if (isFirstLoginFlag) {
         var message_text_tmp = "Hi " + user.displayName + "\n"
         message_text_tmp += "歡迎加入FlightGo 旅行社!!\n\n"
-        message_text_tmp += "，我是旅遊小幫手:小高。\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知我老大來為您服務喔\n\n"
+        message_text_tmp += "我是旅遊小幫手:小高。\n\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知我老大來為您服務喔\n\n"
         message_text_tmp += "可以從選單內點選如何使用來獲取功能說明喔\n\n"
         message_text_tmp += "為了提供更好的服務，請先填入以下基本資訊~"
         var message = { type: 'text', text: message_text_tmp }
