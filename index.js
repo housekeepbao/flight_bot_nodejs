@@ -20,7 +20,7 @@ const client = new line.Client(config);
 const dialog_function = require('./dialog_function.js')
 const questionnaire_function = require('./questionnaire_function.js')
 const lineapi = require('./lineapi.js')
-
+const api = require('./api.js')
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
