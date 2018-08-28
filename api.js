@@ -88,11 +88,12 @@ module.exports.isFirstLogin = function (user_key,callback) {
         params: {}
     })
         .then(function (response) {
+            console.log('isFirstLogin',response)
             if(response.length >= 1) {
-                callback(true) 
+                callback(false) 
             }
             else {
-                callback(false)  
+                callback(true)  
             }
         })
         .catch(function (error) {
