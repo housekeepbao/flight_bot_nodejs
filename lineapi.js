@@ -14,29 +14,29 @@ const config = require('./lineConfig.js').lineAccoessTokenConfig
 const client = new line.Client(config);
 
 module.exports = {}
-module.exports.replyText = function (event, replay_text) {
+module.exports.replyText = function (event, replay_text, callback) {
     client.replyMessage(event.replyToken, replay_text)
         .then(() => {
             console.log('reply message success',replay_text)
-            return true
+            callback(true)
         })
         .catch((err) => {
             // error handling
             console.log('reply message failed', err)
-            return false
+            callback(false)
         });
 }
 
-module.exports.pushText = function (user_key, push_text) {
+module.exports.pushText = function (user_key, push_text,callback) {
     client.pushMessage(user_key, push_text)
         .then(() => {
             console.log('sent message success', push_text)
-            return true
+            callback(true)
         })
         .catch((err) => {
             // error handling
             console.log('sent message failed', err)
-            return false
+            callback(false)
         });
 }
 

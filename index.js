@@ -148,7 +148,7 @@ function handlePostback(event) {
         packageId: '1',
         stickerId: '134'
       }
-      lineapi.pushText(user_key, [message_text, message_slicker]).then(() => {
+      lineapi.pushText(user_key, [message_text, message_slicker], function () {
         questionnaire_function.saveFavoriteQuestionnaire(
           user_key, ask_user_favorite_session_dict[user_key])
       })
@@ -258,7 +258,7 @@ function follow_Event(event) {
           packageId: '1',
           stickerId: '4'
         }
-        lineapi.replyText(event, [message, message_slicker]).then(() => {
+        lineapi.replyText(event, [message, message_slicker], function () {
           dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
             if (isFinish != true) {
               ask_member_Info_session_dict = session_dict
@@ -270,7 +270,6 @@ function follow_Event(event) {
           })
         })
       }
-
     }
     )
   }
