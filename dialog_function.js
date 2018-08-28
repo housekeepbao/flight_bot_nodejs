@@ -120,22 +120,22 @@ module.exports.customer_service_button = function(user_key){
 
 function customer_button (user_key) {
     confirm_template = {
-        "type": "template",
-        "altText": '確認按鈕',
-        "template": {
-            "type": "confirm",
-            "title": '轉接線上客服人員',
-            "text": '是否轉接線上客服人員，客服人員服務時間 早上 09:00 ~ 晚上 19:00',
-            "actions": [
+        type: "template",
+        altText: '確認按鈕',
+        template: {
+            type: "confirm",
+            title: '轉接線上客服人員',
+            text: '是否轉接線上客服人員，客服人員服務時間 早上 09:00 ~ 晚上 19:00',
+            actions: [
                 {
-                    "type": "postback",
-                    "label": "是",
-                    "data": "customer_service,Yes"
+                    type: "postback",
+                    label: "是",
+                    data: "customer_service,Yes"
                 },
                 {
-                    "type": "postback",
-                    "label": "否",
-                    "data": "customer_service,No"
+                    type: "postback",
+                    label: "否",
+                    data: "customer_service,No"
                 }
             ]
         }
