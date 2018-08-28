@@ -1,9 +1,9 @@
 const lineapi = require('./lineapi.js')
 module.exports = {}
-module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, event,callback) {
+module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, event, callback) {
     var user_key = event.source.user_id
     var isFinish = false
-    if (ask_member_Info_session_dict.indexOf(user_key) === -1) {
+    if (user_key in ask_member_Info_session_dict) {
         ask_member_Info_session_dict[user_key] = ["ask_session_start"]
     }
     console.log('Dialog Session length', ask_member_Info_session_dict[user_key].lenght)
@@ -62,7 +62,7 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
                     ]
                 }
             }
-            ask_member_Info_session_dict[user_key] =tmp_list
+            ask_member_Info_session_dict[user_key] = tmp_list
             lineapi.pushText(user_key, gender_button)
         }
         else {
@@ -79,13 +79,13 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
             tmp_list.push(message)
             var tickets_text = "會員資料已輸入完畢。"
             var push_text = { type: 'text', text: tickets_text };
-            ask_member_Info_session_dict[user_key] =tmp_list
+            ask_member_Info_session_dict[user_key] = tmp_list
             var message_slicker = {
                 type: "sticker",
                 packageId: '1',
                 stickerId: '125'
             }
-            lineapi.pushText(user_key, [push_text,message_slicker])
+            lineapi.pushText(user_key, [push_text, message_slicker])
             ask_member_Info_session_dict[user_key][0] = 'ask_session_close'
             isFinish = true
         }
@@ -96,5 +96,45 @@ module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, ev
         }
         lineapi.pushText(user_key, push_text)
     }
-    callback(ask_member_Info_session_dict,isFinish)
+    callback(ask_member_Info_session_dict, isFinish)
+}
+
+
+module.exports.other_session = function (event) {
+    console.log('#other_session#')
+    message_slicker =
+        {
+            type: "sticker",
+            packageId: '2',
+            stickerId: '34'
+        }
+    var push_text = { type: 'text', text: "請問是否有其他問題? \n 有任何問題將交由真人客服為您服務" };
+    lineapi.replyText(event, [message, message_slicker])
+    customer_service_button(event.source.user_id)
+}
+
+
+module.exports.customer_service_button = function (user_key) {
+    confirm_template = {
+        "type": "template",
+        "altText": '確認按鈕',
+        "template": {
+            "type": "confirm",
+            "title": '轉接線上客服人員',
+            "text": '是否轉接線上客服人員，客服人員服務時間 早上 09:00 ~ 晚上 19:00',
+            "actions": [
+                {
+                    "type": "postback",
+                    "label": "是",
+                    "data": "customer_service,Yes"
+                },
+                {
+                    "type": "postback",
+                    "label": "否",
+                    "data": "customer_service,No"
+                }
+            ]
+        }
+    }
+    lineapi.pushText(user_key, confirm_template)
 }

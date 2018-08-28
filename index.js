@@ -95,7 +95,7 @@ function handleText(message, event) {
   console.log('#MessageEvent#')
   console.log(event)
   var user_key = event.source.user_id
-  if (ask_member_Info_session_dict.indexOf(user_key) != -1 && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
+  if ( user_key in ask_member_Info_session_dict  && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
     dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
       if (isFinish != true) {
         ask_member_Info_session_dict = session_dict
@@ -105,6 +105,9 @@ function handleText(message, event) {
         ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
       }
     })
+  }
+  else {
+    dialog_function.other_session(event)
   }
 
 }
