@@ -95,7 +95,7 @@ function handleText(message, event) {
   console.log('#MessageEvent#')
   console.log(event)
   var user_key = event.source.userId
-  if ( (user_key in ask_member_Info_session_dict)  && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
+  if ((user_key in ask_member_Info_session_dict) && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
     dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
       if (isFinish != true) {
         ask_member_Info_session_dict = session_dict
@@ -148,9 +148,10 @@ function handlePostback(event) {
         packageId: '1',
         stickerId: '134'
       }
-      lineapi.pushText(user_key, [message_text, message_slicker])
-      questionnaire_function.saveFavoriteQuestionnaire(
-        user_key, ask_user_favorite_session_dict[user_key])
+      lineapi.pushText(user_key, [message_text, message_slicker]).then(() => {
+        questionnaire_function.saveFavoriteQuestionnaire(
+          user_key, ask_user_favorite_session_dict[user_key])
+      })
     }
     else if (data_content.indexOf("ask") != -1) {
       ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
@@ -257,17 +258,19 @@ function follow_Event(event) {
           packageId: '1',
           stickerId: '4'
         }
-        lineapi.replyText(event, [message, message_slicker])
-        dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
-          if (isFinish != true) {
-            ask_member_Info_session_dict = session_dict
-          }
-          else {
-            ask_member_Info_session_dict = session_dict
-            ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
-          }
+        lineapi.replyText(event, [message, message_slicker]).then(() => {
+          dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
+            if (isFinish != true) {
+              ask_member_Info_session_dict = session_dict
+            }
+            else {
+              ask_member_Info_session_dict = session_dict
+              ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
+            }
+          })
         })
       }
+
     }
     )
   }
