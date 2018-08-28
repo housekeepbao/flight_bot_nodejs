@@ -109,7 +109,7 @@ module.exports.other_session = function (event) {
             stickerId: '34'
         }
     var push_text = { type: 'text', text: "請問是否有其他問題? \n 有任何問題將交由真人客服為您服務" };
-    lineapi.pushText(event, [push_text, message_slicker])
+    lineapi.pushText(event.source.userId, [push_text, message_slicker])
     customer_button(event.source.userId)
 }
 
