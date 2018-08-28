@@ -83,3 +83,20 @@ module.exports.sendPushMessage = function (token, userId, msg, customerServiceNa
             console.log('sent message failed', err)
         });
 }
+module.exports.isFirstLogin = function (user_key,callback) {
+    axios.get(this.server + '/lineusers/userid/' + userId, {
+        params: {}
+    })
+        .then(function (response) {
+            if(response.length >= 1) {
+                callback(true) 
+            }
+            else {
+                callback(false)  
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    
+}
