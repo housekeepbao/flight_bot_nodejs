@@ -84,7 +84,7 @@ module.exports.sendPushMessage = function (token, userId, msg, customerServiceNa
         });
 }
 module.exports.isFirstLogin = function (user_key,callback) {
-    axios.get(this.server + '/lineusers/userid/' + userId, {
+    axios.get(this.server + '/lineusers/userid/' + user_key, {
         params: {}
     })
         .then(function (response) {
