@@ -88,8 +88,8 @@ module.exports.isFirstLogin = function (user_key,callback) {
         params: {}
     })
         .then(function (response) {
-            console.log('isFirstLogin',response)
-            if(response.length >= 1) {
+            console.log('isFirstLogin',response.data )
+            if(response.data != []) {
                 callback(false) 
             }
             else {
