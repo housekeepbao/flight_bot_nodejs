@@ -94,7 +94,7 @@ function handleEvent(event) {
 function handleText(message, event) {
   console.log('#MessageEvent#')
   console.log(event)
-  var user_key = event.source.user_id
+  var user_key = event.source.userId
   if ( user_key in ask_member_Info_session_dict  && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
     dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
       if (isFinish != true) {
@@ -135,7 +135,7 @@ function handleSticker(message, event) {
 function handlePostback(event) {
   console.log("#PostbackEvent#")
   console.log(event)
-  var user_key = event.source.user_id
+  var user_key = event.source.userId
   console.log(event.postback.data)
   var data_content = event.postback.data
   if (data_content.indexOf("travel") != -1) {
@@ -239,7 +239,7 @@ function handlePostback(event) {
 
 function follow_Event(event) {
   console.log("#Follow Event#")
-  var user_key = event.source.user_id
+  var user_key = event.source.userId
   api.getLineUserProfile(user_key, function (user) {
     console.log('user data', user)
     api.isFirstLogin(user_key, function (isFirstLoginFlag) {

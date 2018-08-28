@@ -1,7 +1,7 @@
 const lineapi = require('./lineapi.js')
 module.exports = {}
 module.exports.ask_paper_memberInfo = function (ask_member_Info_session_dict, event, callback) {
-    var user_key = event.source.user_id
+    var user_key = event.source.userId
     var isFinish = false
     if (user_key in ask_member_Info_session_dict) {
         ask_member_Info_session_dict[user_key] = ["ask_session_start"]
@@ -110,7 +110,7 @@ module.exports.other_session = function (event) {
         }
     var push_text = { type: 'text', text: "請問是否有其他問題? \n 有任何問題將交由真人客服為您服務" };
     lineapi.pushText(event, [push_text, message_slicker])
-    customer_button(event.source.user_id)
+    customer_button(event.source.userId)
 }
 
 
