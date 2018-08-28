@@ -17,7 +17,7 @@ module.exports = {}
 module.exports.replyText = function (event, replay_text) {
     client.replyMessage(event.replyToken, replay_text)
         .then(() => {
-            console.log('reply message success', message)
+            console.log('reply message success',replay_text)
         })
         .catch((err) => {
             // error handling
@@ -28,7 +28,7 @@ module.exports.replyText = function (event, replay_text) {
 module.exports.pushText = function (user_key, push_text) {
     client.pushMessage(user_key, push_text)
         .then(() => {
-            console.log('sent message success', message)
+            console.log('sent message success', push_text)
         })
         .catch((err) => {
             // error handling
