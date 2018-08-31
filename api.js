@@ -1,7 +1,7 @@
 // create LINE SDK config from env variables
 var axios = require('axios');
 
-const config = require('./lineConfig.js').lineAccoessTokenConfig
+const config = require('./lineconfig.js').lineAccoessTokenConfig
 // create LINE SDK client
 const line = require('@line/bot-sdk');
 const client = new line.Client(config);

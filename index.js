@@ -11,24 +11,25 @@ const config = {
   channelSecret: process.env.CHANNEL_SECRET,
 };
 */
-const config = require('./lineConfig.js').lineAccoessTokenConfig
+const config = require('./lineconfig.js').lineAccoessTokenConfig
 
 // create LINE SDK client
 const client = new line.Client(config);
 
 // call the other function 
-const dialog_function = require('./dialog_function.js')
-const questionnaire_function = require('./questionnaire_function.js')
+const dialogFunction = require('./dialogfunction.js')
+const questionnaireFunction = require('./questionnairefunction.js')
 const lineapi = require('./lineapi.js')
 const api = require('./api.js')
+const menufunction =require('./menufunction.js')
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
-var ask_member_Info_session_dict = {};
-var ask_user_favorite_session_dict = {};
-var datetime_type = { type_of_depart: 'depart_date', type_of_return: 'return_date' }
-var type_of_return = "type = return"
-var type_of_depart = "type = depart"
+var askMemberInfoSessionDict = {};
+var askUserFavoriteSessionDict = {};
+var typeOfReturn = "type = return"
+var typeOfDepart = "type = depart"
+var datetimeType = { typeOfDepart: 'depart_date', typeOfReturn: 'return_date' }
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
@@ -66,13 +67,13 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      return follow_Event(event);
+      return followEvent(event);
 
     case 'unfollow':
-      return unfollow_Event(event);
+      return unfollowEvent(event);
 
     case 'join':
-      return join_Event(event);
+      return joinEvent(event);
 
     case 'leave':
       return console.log(`Left: ${JSON.stringify(event)}`);
@@ -94,20 +95,20 @@ function handleEvent(event) {
 function handleText(message, event) {
   console.log('#MessageEvent#')
   console.log(event)
-  var user_key = event.source.userId
-  if ((user_key in ask_member_Info_session_dict) && ask_member_Info_session_dict[user_key][0] === "ask_session_start") {
-    dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
+  var userKey = event.source.userId
+  if ((userKey in askMemberInfoSessionDict) && askMemberInfoSessionDict[userKey][0] === "ask_session_start") {
+    dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
       if (isFinish != true) {
-        ask_member_Info_session_dict = session_dict
+        askMemberInfoSessionDict = sessionDict
       }
       else {
-        ask_member_Info_session_dict = session_dict
-        ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
+        askMemberInfoSessionDict = sessionDict
+        askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
       }
     })
   }
   else {
-    dialog_function.other_session(event)
+    dialogFunction.otherSession(event)
   }
 
 }
@@ -135,38 +136,42 @@ function handleSticker(message, event) {
 function handlePostback(event) {
   console.log("#PostbackEvent#")
   console.log(event)
-  var user_key = event.source.userId
+  var userKey = event.source.userId
   console.log(event.postback.data)
-  var data_content = event.postback.data
-  if (data_content.indexOf("travel") != -1) {
-    if ("Done" in data_content) {
-      console.log(ask_user_favorite_session_dict[user_key])
-      message_text_tmp = "太好了，已經完成喜好旅遊類型問卷囉。"
-      var message_text = { type: 'text', text: message_text_tmp };
-      var message_slicker = {
+  var dataContent = event.postback.data
+  if (dataContent.indexOf("travel") != -1) {
+    if ("Done" in dataContent) {
+      console.log(askUserFavoriteSessionDict[userKey])
+      messageTextTmp = "太好了，已經完成喜好旅遊類型問卷囉。"
+      var messageText = { type: 'text', text: messageTextTmp };
+      var messageSlicker = {
         type: "sticker",
         packageId: '1',
         stickerId: '134'
       }
-      lineapi.pushText(user_key, [message_text, message_slicker], function () {
-        questionnaire_function.saveFavoriteQuestionnaire(
-          user_key, ask_user_favorite_session_dict[user_key])
-      })
+      lineapi.pushText(userKey, [messageText, messageSlicker]).then(() => {
+        questionnaireFunction.saveFavoriteQuestionnaire(
+          userKey, askUserFavoriteSessionDict[userKey])
+      }).catch(() => {
+        // error handling
+        console.log('sent message failed so dont ask questionnaire ')
+        reject(false)
+      });
     }
-    else if (data_content.indexOf("ask") != -1) {
-      ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
+    else if (dataContent.indexOf("ask") != -1) {
+      askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
     }
     else {
-      tmp_list = list(ask_user_favorite_session_dict[user_key])
-      content_tmp = event.postback.data.split(",")
-      console.log("favorite is " + content_tmp[-1])
-      tmp_list.push(content_tmp[-1])
-      ask_user_favorite_session_dict[user_key] = tmp_list
-      message_text_tmp = "選擇喜好旅遊類型:" +
-        travel_kind_dict[content_tmp[-1]] + "\n\n"
-      message_text_tmp += "可繼續點選喜好的旅遊類型，也可點擊完成問卷按鈕"
-      var message = { type: 'text', text: message_text_tmp };
-      tickets_text = {
+      tmpList = list(askUserFavoriteSessionDict[userKey])
+      contentTmp = event.postback.data.split(",")
+      console.log("favorite is " + contentTmp[-1])
+      tmpList.push(contentTmp[-1])
+      askUserFavoriteSessionDict[userKey] = tmpList
+      messageTextTmp = "選擇喜好旅遊類型:" +
+        travelKindDict[contentTmp[-1]] + "\n\n"
+      messageTextTmp += "可繼續點選喜好的旅遊類型，也可點擊完成問卷按鈕"
+      var message = { type: 'text', text: messageTextTmp };
+      ticketsText = {
         "type": "template",
         "altText": '確認按鈕',
         "template": {
@@ -187,17 +192,17 @@ function handlePostback(event) {
           ]
         }
       }
-      lineapi.pushText(user_key, message)
+      lineapi.pushText(userKey, message)
     }
   }
   else {
-    if (data_content === 'reSearch = true') {
+    if (dataContent === 'reSearch = true') {
       /*  
       session_dict[user_key] = ['重新搜尋航班']
       session_second_list = list(session_dict[user_key])
       */
     }
-    else if (data_content == type_of_depart) {
+    else if (dataContent == typeOfDepart) {
       /*
       time = event.postback.params
       session_second_list = list(session_dict[user_key])
@@ -209,7 +214,7 @@ function handlePostback(event) {
       push_message(event.source.user_id, choice_datatime(type_of_return))
       */
     }
-    else if (data_content === type_of_return) {
+    else if (dataContent === typeOfReturn) {
       /*
       time = event.postback.params
       session_second_list = list(session_dict[user_key])
@@ -238,44 +243,49 @@ function handlePostback(event) {
   }
 }
 
-function follow_Event(event) {
+function followEvent(event) {
   console.log("#Follow Event#")
-  var user_key = event.source.userId
-  api.getLineUserProfile(user_key, function (user) {
+  var userKey = event.source.userId
+  menufunction.getRichId(userKey)
+  api.getLineUserProfile(userKey, function (user) {
     console.log('user data', user)
-    api.isFirstLogin(user_key, function (isFirstLoginFlag) {
+    api.isFirstLogin(userKey, function (isFirstLoginFlag) {
       if (isFirstLoginFlag) {
-        var message_text_tmp = "Hi " + user.displayName + "\n"
-        message_text_tmp += "歡迎加入FlightGo 旅行社!!\n\n"
-        message_text_tmp += "我是旅遊小幫手:小高。\n\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知我老大來為您服務喔\n\n"
-        message_text_tmp += "可以從選單內點選如何使用來獲取功能說明喔\n\n"
-        message_text_tmp += "為了提供更好的服務，請先填入以下基本資訊~"
-        var message = { type: 'text', text: message_text_tmp }
-        var tmp_list = ["ask_session_start"]
-        ask_member_Info_session_dict[user.userId] = tmp_list
-        var message_slicker = {
+        var messageTextTmp = "Hi " + user.displayName + "\n"
+        messageTextTmp += "歡迎加入FlightGo 旅行社!!\n\n"
+        messageTextTmp += "我是旅遊小幫手:小高。\n\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知我老大來為您服務喔\n\n"
+        messageTextTmp += "可以從選單內點選如何使用來獲取功能說明喔\n\n"
+        messageTextTmp += "為了提供更好的服務，請先填入以下基本資訊~"
+        var message = { type: 'text', text: messageTextTmp }
+        var tmpList = ["ask_session_start"]
+        askMemberInfoSessionDict[user.userId] = tmpList
+        var messageSlicker = {
           type: "sticker",
           packageId: '1',
           stickerId: '4'
         }
-        lineapi.replyText(event, [message, message_slicker], function () {
-          dialog_function.ask_paper_memberInfo(ask_member_Info_session_dict, event, function (session_dict, isFinish) {
+        lineapi.replyText(event, [message, messageSlicker]).then(() => { 
+          dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
             if (isFinish != true) {
-              ask_member_Info_session_dict = session_dict
+              askMemberInfoSessionDict = sessionDict
             }
             else {
-              ask_member_Info_session_dict = session_dict
-              ask_user_favorite_session_dict = questionnaire_function.askUserFavoriteTravel(user_key, ask_user_favorite_session_dict)
+              askMemberInfoSessionDict = sessionDict
+              askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
             }
           })
-        })
+        }).catch(() => {
+          // error handling
+          console.log('sent message failed', err)
+          reject(false)
+      });
       }
     }
     )
   }
   )
 }
-function unfollow_Event(event) {
+function unfollowEvent(event) {
   console.log("#unfollow Event#")
 }
 function join_Event(event) {

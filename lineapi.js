@@ -14,29 +14,33 @@ const config = require('./lineConfig.js').lineAccoessTokenConfig
 const client = new line.Client(config);
 
 module.exports = {}
-module.exports.replyText = function (event, replay_text, callback) {
-    client.replyMessage(event.replyToken, replay_text)
-        .then(() => {
-            console.log('reply message success',replay_text)
-            callback(true)
-        })
-        .catch((err) => {
-            // error handling
-            console.log('reply message failed', err)
-            callback(false)
-        });
+module.exports.replyText = function (event, replayText) {
+    return new Promise(function (resolve, reject) {
+        client.replyMessage(event.replyToken, replayText)
+            .then(() => {
+                console.log('reply message success', replayText)
+                resolve(true)
+            })
+            .catch((err) => {
+                // error handling
+                console.log('reply message failed', err)
+                reject(false)
+            });
+    })
 }
 
-module.exports.pushText = function (user_key, push_text,callback) {
-    client.pushMessage(user_key, push_text)
-        .then(() => {
-            console.log('sent message success', push_text)
-            callback(true)
-        })
-        .catch((err) => {
-            // error handling
-            console.log('sent message failed', err)
-            callback(false)
-        });
+module.exports.pushText = function (userKey, pushText) {
+    return new Promise(function (resolve, reject) {
+        client.pushMessage(userKey, pushText)
+            .then(() => {
+                console.log('sent message success', pushText)
+                resolve(true)
+            })
+            .catch((err) => {
+                // error handling
+                console.log('sent message failed', err)
+                reject(false)
+            });
+    })
 }
 
