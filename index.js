@@ -274,9 +274,6 @@ function followEvent(event) {
               askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
             }
           })
-        }).catch(() => {
-          // error handling
-          console.log('sent message failed')
         });
       }
     }
