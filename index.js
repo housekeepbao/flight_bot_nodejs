@@ -21,7 +21,7 @@ const dialogFunction = require('./dialogfunction.js')
 const questionnaireFunction = require('./questionnairefunction.js')
 const lineapi = require('./lineapi.js')
 const api = require('./api.js')
-const menufunction =require('./menufunction.js')
+const menufunction = require('./menufunction.js')
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
@@ -264,7 +264,7 @@ function followEvent(event) {
           packageId: '1',
           stickerId: '4'
         }
-        lineapi.replyText(event, [message, messageSlicker]).then(() => { 
+        lineapi.replyText(event, [message, messageSlicker]).then(() => {
           dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
             if (isFinish != true) {
               askMemberInfoSessionDict = sessionDict
@@ -276,9 +276,9 @@ function followEvent(event) {
           })
         }).catch(() => {
           // error handling
-          console.log('sent message failed', err)
+          console.log('sent message failed')
           reject(false)
-      });
+        });
       }
     }
     )
