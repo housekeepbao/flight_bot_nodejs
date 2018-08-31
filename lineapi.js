@@ -24,7 +24,6 @@ module.exports.replyText = function (event, replayText) {
             .catch((err) => {
                 // error handling
                 console.log('reply message failed', err)
-                reject(false)
             });
     })
 }
@@ -39,7 +38,6 @@ module.exports.pushText = function (userKey, pushText) {
             .catch((err) => {
                 // error handling
                 console.log('sent message failed', err)
-                reject(false)
             });
     })
 }
