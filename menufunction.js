@@ -97,7 +97,7 @@ module.exports.getRichId = function (userKey) {
                 "action": {
                     "type": "uri",
                     "label":'share_friend',
-                    "uri":"line://msg/text/?"+share_string_encode
+                    "uri":"line://msg/text/?"+shareStringEncode
                 }
             }
         ]
