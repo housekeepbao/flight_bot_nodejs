@@ -8,7 +8,7 @@ module.exports = {}
 
 module.exports.getRichId = function (userKey) {
     var shareString = '不是好東西，就不會跟你分享，這FlightGO超好用的，聰明又貼心，快加它玩看看。\n FlightGO:line://ti/p/@bee6285z'
-    var shareStringEncode = encodeURIComponent(share_string)
+    var shareStringEncode = encodeURIComponent(shareString)
     var richMenuToCreate = {
         "size": {
             "width": 2500,
