@@ -8,14 +8,14 @@ const config = {
   channelSecret: process.env.CHANNEL_SECRET,
 };
 */
-const config = require('./lineConfig.js').lineAccoessTokenConfig
+const config = require('./lineconfig.js').lineAccoessTokenConfig
 
 // create LINE SDK client
 const client = new line.Client(config);
 
 module.exports = {}
 module.exports.replyText = function (event, replayText) {
-    return new Promise(function (resolve, reject) {
+    return new Promise( (resolve, reject)  => {
         client.replyMessage(event.replyToken, replayText)
             .then(() => {
                 console.log('reply message success', replayText)
@@ -30,7 +30,7 @@ module.exports.replyText = function (event, replayText) {
 }
 
 module.exports.pushText = function (userKey, pushText) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         client.pushMessage(userKey, pushText)
             .then(() => {
                 console.log('sent message success', pushText)
