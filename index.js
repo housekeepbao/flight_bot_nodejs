@@ -277,7 +277,6 @@ function followEvent(event) {
         }).catch(() => {
           // error handling
           console.log('sent message failed')
-          reject(false)
         });
       }
     }
