@@ -15,6 +15,9 @@ const client = new line.Client(config);
 
 module.exports = {}
 module.exports.replyText = function (event, replayText) {
+    process.on('unhandledRejection', (reason, p) => {
+        console.log('未處理 rejection：', p, '原因：', reason);
+      });
     return new Promise((resolve, reject) => {
         var flag = false
         client.replyMessage(event.replyToken, replayText,resolve,reject)
@@ -27,10 +30,14 @@ module.exports.replyText = function (event, replayText) {
                 console.log('reply message failed', err)
                 reject(false)
             });
-    })
+    }).catch(()=>{})
 }
 
 module.exports.pushText = function (userKey, pushText) {
+    process.on('unhandledRejection', (reason, p) => {
+        console.log('未處理 rejection：', p, '原因：', reason);
+        // 记录日志、抛出错误、或其他逻辑。
+      });
     return new Promise((resolve, reject) => {
         var flag = false
         client.pushMessage(userKey, pushText, replayText,resolve,reject)
@@ -43,6 +50,6 @@ module.exports.pushText = function (userKey, pushText) {
                 console.log('sent message failed', err)
                 reject(false)
             });
-    })
+    }).catch(()=>{})
 }
 
