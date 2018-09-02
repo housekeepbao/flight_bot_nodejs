@@ -22,7 +22,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         tmpList.push("ask_session_start")
         askMemberInfoSessionDict[userKey] = tmpList
         var pushText = { type: 'text', text: ticketsText };
-        lineapi.pushText(userKey, pushText).then(()=>{})
+        lineapi.pushText(userKey, pushText)
     }
     else if (askMemberInfoSessionDict[userKey].length == 2) {
         var re = /\d+/
@@ -30,13 +30,13 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             tmpList.push(messageText)
             var ticketsText = "請輸入您的電子信箱 例如:mymail@gmail.com"
             var pushText = { type: 'text', text: ticketsText };
-            askMemberInfoSessionDict[userKey] = list(tmpList)
+            askMemberInfoSessionDict[userKey] = tmpList
         }
         else {
             var ticketsText = "輸入的電話號碼有錯，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
         }
-        lineapi.pushText(userKey, pushText).then(()=>{})
+        lineapi.pushText(userKey, pushText)
 
     }
     else if (askMemberInfoSessionDict[userKey].length == 3) {
@@ -67,12 +67,12 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                 }
             }
             askMemberInfoSessionDict[userKey] = tmpList
-            lineapi.pushText(userKey, gender_button).then(()=>{})
+            lineapi.pushText(userKey, gender_button)
         }
         else {
             var ticketsText = "輸入的電子信箱有誤，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
-            lineapi.pushText(userKey, pushText).then(()=>{})
+            lineapi.pushText(userKey, pushText)
         }
     }
     else if (askMemberInfoSessionDict[userKey].length == 4) {
@@ -93,7 +93,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         else {
             var ticketsText = "輸入的電子信箱有誤，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
-            lineapi.pushText(userKey, pushText).then(()=>{})
+            lineapi.pushText(userKey, pushText)
         }
     }
     else {
