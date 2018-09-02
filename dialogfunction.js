@@ -44,24 +44,24 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         if (re.test(messageText)) {
             tmpList.push(messageText)
             var gender_button = {
-                "type": "template",
-                "altText": '會員資料調查',
-                "template": {
-                    "type": "button",
-                    "title": '請問您的性別',
-                    "text": '請選擇您的性別',
-                    "actions": [
+                type: "template",
+                altText: '會員資料調查',
+                template: {
+                    type: "button",
+                    title: '請問您的性別',
+                    text: '請選擇您的性別',
+                    actions: [
                         {
-                            "type": "postback",
-                            "label": "男性",
-                            "text": '男性',
-                            "data": "male"
+                            type: "postback",
+                            label: "男性",
+                            text: '男性',
+                            data: "male"
                         },
                         {
-                            "type": "postback",
-                            "label": "女性",
-                            "text": '女性',
-                            "data": "female"
+                            type: "postback",
+                            label: "女性",
+                            text: '女性',
+                            data: "female"
                         }
                     ]
                 }
