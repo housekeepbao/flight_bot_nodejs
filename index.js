@@ -265,6 +265,7 @@ function followEvent(event) {
           stickerId: '4'
         }
         lineapi.replyText(event, [message, messageSlicker]).then(() => {
+          console.log("replyText sucess")
           dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
             if (isFinish != true) {
               askMemberInfoSessionDict = sessionDict
@@ -274,7 +275,7 @@ function followEvent(event) {
               askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
             }
           })
-        }).catch(()=>{});
+        }).catch(()=>{console.log('replayTest error')});
       }
     }
     )
