@@ -11,7 +11,6 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     else {
         var messageText = event.message.text  
     }
-
     if (userKey in askMemberInfoSessionDict) {
         askMemberInfoSessionDict[userKey] = ["ask_session_start"]
     }
@@ -95,6 +94,10 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             var pushText = { type: 'text', text: ticketsText };
             lineapi.pushText(userKey, pushText)
         }
+    }
+    else {
+        console.log('askPaperMemberInfo enter other else ')
+        console.log('try askMemberInfoSessionDict[userKey].length == 1 is  ',askMemberInfoSessionDict[userKey].length == 1)
     }
     callback(askMemberInfoSessionDict, isFinish)
 }
