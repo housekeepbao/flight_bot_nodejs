@@ -274,7 +274,7 @@ function followEvent(event) {
               askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
             }
           })
-        });
+        }).catch(()=>{});
       }
     }
     )
