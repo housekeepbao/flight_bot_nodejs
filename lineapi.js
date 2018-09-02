@@ -28,8 +28,8 @@ module.exports.replyText = function (event, replayText) {
                 // error handling
                 console.log('reply message failed', err)
             });
+        resolve(true)    
     }).catch(()=>{})
-    resolve(true)
 }
 
 module.exports.pushText = function (userKey, pushText) {
@@ -47,7 +47,7 @@ module.exports.pushText = function (userKey, pushText) {
                 // error handling
                 console.log('sent message failed', err)
             });
+        resolve(true)
     }).catch(()=>{})
-    resolve(true)
 }
 
