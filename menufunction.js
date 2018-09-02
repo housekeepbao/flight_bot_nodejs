@@ -105,6 +105,7 @@ module.exports.getRichId = function (userKey) {
     client.createRichMenu(richMenuToCreate).then(function(response){
         var contentType = 'image/jpeg'
         var imgPath = "images/rich_background.png"
+        console.log(response)
         client.setRichMenuImage(response.richMenuId,fs.createReadStream(imgPath),contentType).then(() => {
             client.linkRichMenuToUser(userKey,response.richMenuId)
         }).catch(function (error) {

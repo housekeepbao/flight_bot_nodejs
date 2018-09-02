@@ -47,7 +47,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                 type: "template",
                 altText: '會員資料調查',
                 template: {
-                    type: "button",
+                    type: "buttons",
                     title: '請問您的性別',
                     text: '請選擇您的性別',
                     actions: [
@@ -64,7 +64,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                             data: "female"
                         },
                     ],
-                },
+                }
             }
             askMemberInfoSessionDict[userKey] = tmpList
             lineapi.pushText(userKey, gender_button)
