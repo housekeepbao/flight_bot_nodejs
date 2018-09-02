@@ -62,9 +62,9 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                             label: "女性",
                             text: '女性',
                             data: "female"
-                        }
-                    ]
-                }
+                        },
+                    ],
+                },
             }
             askMemberInfoSessionDict[userKey] = tmpList
             lineapi.pushText(userKey, gender_button)
