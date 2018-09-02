@@ -39,7 +39,7 @@ module.exports.pushText = function (userKey, pushText) {
       });
     return new Promise((resolve, reject) => {
         var flag = false
-        client.pushMessage(userKey, pushText, replayText)
+        client.pushMessage(userKey, pushText)
             .then(() => {
                 console.log('sent message success', pushText)
                 resolve(true)
