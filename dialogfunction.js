@@ -6,7 +6,13 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     var isFinish = false
     var tmpList = askMemberInfoSessionDict[userKey]
     console.log('event.message ',event.message)
-    var messageText = event.message.text
+    if(!event.message){
+        var messageText = event.message.text  
+    }
+    else {
+        messageText = "None" 
+    }
+
     if (userKey in askMemberInfoSessionDict) {
         askMemberInfoSessionDict[userKey] = ["ask_session_start"]
     }
