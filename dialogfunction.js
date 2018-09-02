@@ -5,12 +5,11 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     var userKey = event.source.userId
     var isFinish = false
     var tmpList = askMemberInfoSessionDict[userKey]
-    console.log('event.message ',event.message)
     if(!event.message){
-        var messageText = event.message.text  
+        messageText = "None" 
     }
     else {
-        messageText = "None" 
+        var messageText = event.message.text  
     }
 
     if (userKey in askMemberInfoSessionDict) {
