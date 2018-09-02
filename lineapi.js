@@ -17,44 +17,32 @@ module.exports = {}
 module.exports.replyText = function (event, replayText) {
     return new Promise((resolve, reject) => {
         var flag = false
-        client.replyMessage(event.replyToken, replayText)
+        client.replyMessage(event.replyToken, replayText,resolve,reject)
             .then(() => {
                 console.log('reply message success', replayText)
-                flag = true
+                resolve(true)
             })
             .catch((err) => {
                 // error handling
                 console.log('reply message failed', err)
+                reject(false)
             });
-        if (flag) {
-            resolve(true)
-        }
-        else {
-            reject(false)
-            console.log("pushText fail")
-        }
     })
 }
 
 module.exports.pushText = function (userKey, pushText) {
     return new Promise((resolve, reject) => {
         var flag = false
-        client.pushMessage(userKey, pushText)
+        client.pushMessage(userKey, pushText, replayText,resolve,reject)
             .then(() => {
                 console.log('sent message success', pushText)
-                flag = true
+                resolve(true)
             })
             .catch((err) => {
                 // error handling
                 console.log('sent message failed', err)
+                reject(false)
             });
-        if (flag) {
-            resolve(true)
-        }
-        else {
-            reject(false)
-            console.log("pushText fail")
-        }
     })
 }
 
