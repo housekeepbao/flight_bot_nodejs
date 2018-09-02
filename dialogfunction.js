@@ -4,19 +4,20 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     console.log('#askPaperMemberInfo function')
     var userKey = event.source.userId
     var isFinish = false
-    var tmpList = askMemberInfoSessionDict[userKey]
     if(!event.message){
         messageText = "None" 
     }
     else {
         var messageText = event.message.text  
     }
-    if (userKey in askMemberInfoSessionDict) {
+    if (!(userKey in askMemberInfoSessionDict)) {
         askMemberInfoSessionDict[userKey] = ["ask_session_start"]
     }
+    var tmpList = askMemberInfoSessionDict[userKey]
     console.log('Dialog Session length', askMemberInfoSessionDict[userKey].length)
     console.log('Dialog Session content', askMemberInfoSessionDict[userKey])
     if (askMemberInfoSessionDict[userKey].length == 1) {
+        console.log('askMemberInfoSessionDict[userKey].length  is 1')
         var ticketsText = "請輸入您的行動電話號碼 例如:09123456789"
         tmpList.push("ask_session_start")
         askMemberInfoSessionDict[userKey] = tmpList
