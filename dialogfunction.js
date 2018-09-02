@@ -5,7 +5,8 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     var userKey = event.source.userId
     var isFinish = false
     var tmpList = askMemberInfoSessionDict[userKey]
-    var message = event.message.text
+    console.log('event.message ',event.message)
+    var messageText = event.message.text
     if (userKey in askMemberInfoSessionDict) {
         askMemberInfoSessionDict[userKey] = ["ask_session_start"]
     }
@@ -20,8 +21,8 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     }
     else if (askMemberInfoSessionDict[userKey].length === 2) {
         var re = /\d+/
-        if (re.test(message)) {
-            tmpList.push(message)
+        if (re.test(messageText)) {
+            tmpList.push(messageText)
             var ticketsText = "請輸入您的電子信箱 例如:mymail@gmail.com"
             var pushText = { type: 'text', text: ticketsText };
             askMemberInfoSessionDict[userKey] = list(tmpList)
@@ -35,8 +36,8 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     }
     else if (askMemberInfoSessionDict[userKey].length === 3) {
         var re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
-        if (re.test(message)) {
-            tmpList.push(message)
+        if (re.test(messageText)) {
+            tmpList.push(messageText)
             var gender_button = {
                 "type": "template",
                 "altText": '會員資料調查',
@@ -70,8 +71,8 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         }
     }
     else if (askMemberInfoSessionDict[userKey].length === 4) {
-        if (message.indexOf("男性") != -1 || message.indexOf("女性")) {
-            tmpList.push(message)
+        if (messageText.indexOf("男性") != -1 || messageText.indexOf("女性")) {
+            tmpList.push(messageText)
             var ticketsText = "會員資料已輸入完畢。"
             var pushText = { type: 'text', text: ticketsText };
             askMemberInfoSessionDict[userKey] = tmpList
