@@ -275,7 +275,7 @@ function followEvent(event) {
               askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
             }
           })
-        }).catch(()=>{console.log('replayTest error')});
+        }).catch( function(error) {console.log('replayTest error',error)});
       }
     }
     )

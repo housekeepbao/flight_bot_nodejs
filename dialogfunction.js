@@ -1,6 +1,7 @@
 const lineapi = require('./lineapi.js')
 module.exports = {}
 module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, callback) {
+    console.log('#askPaperMemberInfo function')
     var userKey = event.source.userId
     var isFinish = false
     var tmpList = askMemberInfoSessionDict[userKey]
