@@ -26,6 +26,8 @@ module.exports.getLineUserProfile = function (userId, callback) {
     client.getProfile(userId).then((profile) => {
         console.log('profile', profile)
         callback(profile)
+    }).catch(function (error) {
+        console.log(error);
     });
 }
 
