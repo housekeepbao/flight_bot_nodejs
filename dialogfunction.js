@@ -17,14 +17,14 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     }
     console.log('Dialog Session length', askMemberInfoSessionDict[userKey].length)
     console.log('Dialog Session content', askMemberInfoSessionDict[userKey])
-    if (askMemberInfoSessionDict[userKey].length === 1) {
+    if (askMemberInfoSessionDict[userKey].length == 1) {
         var ticketsText = "請輸入您的行動電話號碼 例如:09123456789"
         tmpList.push("ask_session_start")
         askMemberInfoSessionDict[userKey] = tmpList
         var pushText = { type: 'text', text: ticketsText };
         lineapi.pushText(userKey, pushText)
     }
-    else if (askMemberInfoSessionDict[userKey].length === 2) {
+    else if (askMemberInfoSessionDict[userKey].length == 2) {
         var re = /\d+/
         if (re.test(messageText)) {
             tmpList.push(messageText)
@@ -39,7 +39,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         lineapi.pushText(userKey, pushText)
 
     }
-    else if (askMemberInfoSessionDict[userKey].length === 3) {
+    else if (askMemberInfoSessionDict[userKey].length == 3) {
         var re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
         if (re.test(messageText)) {
             tmpList.push(messageText)
@@ -75,7 +75,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             lineapi.pushText(userKey, pushText)
         }
     }
-    else if (askMemberInfoSessionDict[userKey].length === 4) {
+    else if (askMemberInfoSessionDict[userKey].length == 4) {
         if (messageText.indexOf("男性") != -1 || messageText.indexOf("女性")) {
             tmpList.push(messageText)
             var ticketsText = "會員資料已輸入完畢。"

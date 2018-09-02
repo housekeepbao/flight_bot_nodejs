@@ -23,12 +23,12 @@ module.exports.replyText = function (event, replayText) {
         client.replyMessage(event.replyToken, replayText)
             .then(() => {
                 console.log('reply message success', replayText)
+                resolve(true) 
             })
             .catch((err) => {
                 // error handling
                 console.log('reply message failed', err)
             });
-        resolve(true)    
     }).catch(()=>{})
 }
 
@@ -42,12 +42,12 @@ module.exports.pushText = function (userKey, pushText) {
         client.pushMessage(userKey, pushText, replayText)
             .then(() => {
                 console.log('sent message success', pushText)
+                resolve(true)
             })
             .catch((err) => {
                 // error handling
                 console.log('sent message failed', err)
             });
-        resolve(true)
     }).catch(()=>{})
 }
 
