@@ -15,30 +15,46 @@ const client = new line.Client(config);
 
 module.exports = {}
 module.exports.replyText = function (event, replayText) {
-    return new Promise( (resolve, reject)  => {
+    return new Promise((resolve, reject) => {
+        var flag = false
         client.replyMessage(event.replyToken, replayText)
             .then(() => {
                 console.log('reply message success', replayText)
-                resolve(true)
+                flag = true
             })
             .catch((err) => {
                 // error handling
                 console.log('reply message failed', err)
             });
+        if (flag) {
+            resolve(true)
+        }
+        else {
+            reject(false)
+            console.log("pushText fail")
+        }
     })
 }
 
 module.exports.pushText = function (userKey, pushText) {
     return new Promise((resolve, reject) => {
+        var flag = false
         client.pushMessage(userKey, pushText)
             .then(() => {
                 console.log('sent message success', pushText)
-                resolve(true)
+                flag = true
             })
             .catch((err) => {
                 // error handling
                 console.log('sent message failed', err)
             });
+        if (flag) {
+            resolve(true)
+        }
+        else {
+            reject(false)
+            console.log("pushText fail")
+        }
     })
 }
 
