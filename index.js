@@ -22,6 +22,8 @@ const questionnaireFunction = require('./questionnairefunction.js')
 const lineapi = require('./lineapi.js')
 const api = require('./api.js')
 const menufunction = require('./menufunction.js')
+const adsfunction = require('./adsfunction.js')
+
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
@@ -107,11 +109,17 @@ function handleText(message, event) {
       }
     })
   }
-  else if (message.text.indexOf("喜好問卷") != -1) {
-    askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
-  }
   else {
-    dialogFunction.otherSession(event)
+    switch (message.text) {
+      case ("喜好問卷"):
+        askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
+        break;
+      case ("廣告"):
+        adsfunction.getAdsInfoCarousel(userKey)
+        break;
+      default:
+        dialogFunction.otherSession(event)
+    }
   }
 
 }
@@ -143,7 +151,7 @@ function handlePostback(event) {
   console.log(event.postback.data)
   var dataContent = event.postback.data
   if (dataContent.indexOf("travel") != -1) {
-    if ("Done" in dataContent) {
+    if (dataContent.indexOf("Done") != -1) {
       console.log(askUserFavoriteSessionDict[userKey])
       messageTextTmp = "太好了，已經完成喜好旅遊類型問卷囉。"
       var messageText = { type: 'text', text: messageTextTmp };
@@ -158,7 +166,6 @@ function handlePostback(event) {
       }).catch(() => {
         // error handling
         console.log('sent message failed so dont ask questionnaire ')
-        reject(false)
       });
     }
     else if (dataContent.indexOf("ask") != -1) {
@@ -256,7 +263,7 @@ function followEvent(event) {
       if (isFirstLoginFlag) {
         var messageTextTmp = "Hi " + user.displayName + "\n"
         messageTextTmp += "歡迎加入FlightGo 旅行社!!\n\n"
-        messageTextTmp += "我是旅遊小幫手:小高。\n\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知我老大來為您服務喔\n\n"
+        messageTextTmp += "我是旅遊小幫手:小高。\n\n 小高我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知真人客服來為您服務喔\n\n"
         messageTextTmp += "可以從選單內點選如何使用來獲取功能說明喔\n\n"
         messageTextTmp += "為了提供更好的服務，請先填入以下基本資訊~"
         var message = { type: 'text', text: messageTextTmp }
@@ -278,7 +285,7 @@ function followEvent(event) {
               askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
             }
           })
-        }).catch( function(error) {console.log('replayTest error',error)});
+        }).catch(function (error) { console.log('replayTest error', error) });
       }
     }
     )
