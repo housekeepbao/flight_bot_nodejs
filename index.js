@@ -107,7 +107,7 @@ function handleText(message, event) {
       }
     })
   }
-  else if ("喜好問卷" in message.text) {
+  else if (message.text.indexOf("喜好問卷") != -1) {
     askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
   }
   else {
