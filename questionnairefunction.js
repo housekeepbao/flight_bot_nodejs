@@ -27,212 +27,212 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
         lineapi.pushText(userKey, [push_tickets_info, message_slicker])
         var bubble = {
             "type": "bubble",
-            "header": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "旅遊喜好問卷",
-                        "size": "xl",
-                        "weight": 'bold'
-                    }
-                ]
-            },
-            "hero": {
-                "type": "image",
-                "url": 'https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/tom-barrett-318954-unsplash.jpg',
-                "size": "full",
-                "aspect_ratio": '20:13',
-                "aspect_mode": 'cover',
-                "action": {
-                    "type": "uri",
-                    "label": "View details",
-                    "uri": 'http://www.flightgoai.com/'
-                }
-            },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": '選擇喜愛的旅遊類型',
-                        "weight": 'bold',
-                        "size": 'xl'
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator",
-                                "color": "#000000"
-                            },
-                            {
-                                "type": "image",
-                                "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/beach-1630540_1920.jpg",
-                                "aspect_ratio": '20:13',
-                                "size": 'xxl',
-                                "aspect_mode": 'cover'
-                            },
-                            {
-                                "type": "button",
-                                "style": 'link',
-                                "color": '#0000FF',
-                                "height": 'sm',
-                                "action": {
-                                    "type": "postback",
-                                    "label": '喜愛島嶼度假',
-                                    "uri": "travel,Islands"
-                                }
+                      "header": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                              {
+                                  "type": "text",
+                                  "text": "旅遊喜好問卷",
+                                  "size": "xl",
+                                  "weight": "bold"
+                              }
+                          ]
+                      },
+                      "hero": {
+                          "type": "image",
+                          "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/tom-barrett-318954-unsplash.jpg",
+                          "size": "full",
+                          "aspectRatio": "20:13",
+                          "aspectMode": "cover",
+                          "action": {
+                              "type": "uri",
+                              "label": "View details",
+                              "uri": "http://www.flightgoai.com/"
+                          }
+                      },
+                      "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                              {
+                                  "type": "text",
+                                  "text": "選擇喜愛的旅遊類型",
+                                  "weight": "bold",
+                                  "size": "xl"
+                              },
+                              {
+                                  "type": "box",
+                                  "layout": "vertical",
+                                  "contents": [
+                                      {
+                                          "type": "separator",
+                                          "color": "#000000"
+                                      },
+                                      {
+                                          "type": "image",
+                                          "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/beach-1630540_1920.jpg",
+                                          "aspectRatio": "20:13",
+                                          "size": "xxl",
+                                          "aspectMode": "cover"
+                                      },
+                                      {
+                                          "type": "button",
+                                          "style": "link",
+                                          "color": "#0000FF",
+                                          "height": "sm",
+                                          "action": {
+                                              "type": "postback",
+                                              "label": "喜愛島嶼度假",
+                                              "data": "travel,Islands"
+                                          }
+          
+                                      },
+                                      {
+                                          "type": "separator",
+                                          "color": "#000000"
+                                      },
+                                      {
+                                          "type": "image",
+                                          "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/japanese-cherry-trees-3063992_1920.jpg",
+                                          "aspectRatio": "20:13",
+                                          "size": "xxl",
+                                          "aspectMode": "cover"
+                                      },
+                                      {
+                                          "type": "button",
+                                          "style": "link",
+                                          "color": "#0000FF",
+                                          "height": "sm",
+                                          "action": {
+                                              "type": "postback",
+                                              "label": "喜愛日韓旅遊",
+                                              "data": "travel,JP_Korea"
+                                          }
+          
+                                      },
+                                      {
+                                          "type": "separator",
+                                          "color": "#000000"
+                                      },
+                                      {
+                                          "type": "image",
+                                          "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/264dc9dadd946494e236391231976bdc_m.jpg",
+                                          "aspectRatio": "20:13",
+                                          "size": "xxl",
+                                          "aspectMode": "cover"
+                                      },
+                                      {
+                                          "type": "button",
+                                          "style": "link",
+                                          "color": "#0000FF",
+                                          "height": "sm",
+                                          "action": {
+                                              "type": "postback",
+                                              "label": "喜愛郵輪旅遊",
+                                              "data": "travel,Cruiseship"
+                                          }
+          
+                                      },
+                                      {
+                                          "type": "separator",
+                                          "color": "#000000"
+                                      },
+                                      {
+                                          "type": "image",
+                                          "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/dahshur-2292509_1920.jpg",
+                                          "aspectRatio": "20:13",
+                                          "size": "xxl",
+                                          "aspectMode": "cover"
+                                      },
+                                      {
+                                          "type": "button",
+                                          "style": "link",
+                                          "color": "#0000FF",
+                                          "height": "sm",
+                                          "action": {
+                                              "type": "postback",
+                                              "label": "喜愛中東非旅遊",
+                                              "data": "travel,Central_Eastern_Africa"
+                                          }
+          
+                                      },
+                                      {
+                                          "type": "separator",
+                                          "color": "#000000"
+                                      },
+                                      {
+                                          "type": "image",
+                                          "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/bangkok-1020850_1920.jpg",
+                                          "aspectRatio": "20:13",
+                                          "size": "xxl",
+                                          "aspectMode": "cover"
+                                      },
+                                      {
+                                          "type": "button",
+                                          "style": "link",
+                                          "color": "#0000FF",
+                                          "height": "sm",
+                                          "action": {
+                                              "type": "postback",
+                                              "label": "喜愛東南亞旅遊",
+                                              "data": "travel,southeast_asia"
+                                          }
+          
+                                      }
+                                  ]
+                              }
+          
+                          ]
+                      },
+                      "footer": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                              {
+                                  "type": "separator",
+                                  "color": "#000000"
+                              },
+                              {
+                                  "type": "button",
+                                  "style": "link",
+                                  "color": "#000000",
+                                  "height": "md",
+                                  "action": {
+                                      "type": "postback",
+                                      "label": "已完成",
+                                      "data": "travel Done"
+                                  }
+          
+                              }
+                          ]
+                      },
+                      "styles": {
+                          "header": {
+                              "backgroundColor": "#DDDDDD",
+                              "separatorColor": "#000000",
+                              "separator": true
+                          },
+                          "hero": {
+                              "backgroundColor": "#FF44AA",
+                              "separatorColor": "#000000",
+                              "separator": true
+                          },
+                          "body": {
+                              "backgroundColor": "#FFFFFF",
+                              "separatorColor": "#000000",
+                              "separator": true
+                          },
+                          "footer": {
+                              "backgroundColor": "#CCEEFF",
+                              "separatorColor": "#000000",
+                              "separator": true
+                          }
+                      }
+          }
 
-                            },
-                            {
-                                "type": "separator",
-                                "color": "#000000"
-                            },
-                            {
-                                "type": "image",
-                                "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/japanese-cherry-trees-3063992_1920.jpg",
-                                "aspect_ratio": '20:13',
-                                "size": 'xxl',
-                                "aspect_mode": 'cover'
-                            },
-                            {
-                                "type": "button",
-                                "style": 'link',
-                                "color": '#0000FF',
-                                "height": 'sm',
-                                "action": {
-                                    "type": "postback",
-                                    "label": '喜愛日韓旅遊',
-                                    "uri": "travel,JP_Korea"
-                                }
-
-                            },
-                            {
-                                "type": "separator",
-                                "color": "#000000"
-                            },
-                            {
-                                "type": "image",
-                                "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/264dc9dadd946494e236391231976bdc_m.jpg",
-                                "aspect_ratio": '20:13',
-                                "size": 'xxl',
-                                "aspect_mode": 'cover'
-                            },
-                            {
-                                "type": "button",
-                                "style": 'link',
-                                "color": '#0000FF',
-                                "height": 'sm',
-                                "action": {
-                                    "type": "postback",
-                                    "label": '喜愛郵輪旅遊',
-                                    "uri": "travel,Cruiseship"
-                                }
-
-                            },
-                            {
-                                "type": "separator",
-                                "color": "#000000"
-                            },
-                            {
-                                "type": "image",
-                                "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/dahshur-2292509_1920.jpg",
-                                "aspect_ratio": '20:13',
-                                "size": 'xxl',
-                                "aspect_mode": 'cover'
-                            },
-                            {
-                                "type": "button",
-                                "style": 'link',
-                                "color": '#0000FF',
-                                "height": 'sm',
-                                "action": {
-                                    "type": "postback",
-                                    "label": '喜愛中東非旅遊',
-                                    "uri": "travel,Central_Eastern_Africa"
-                                }
-
-                            },
-                            {
-                                "type": "separator",
-                                "color": "#000000"
-                            },
-                            {
-                                "type": "image",
-                                "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/bangkok-1020850_1920.jpg",
-                                "aspect_ratio": '20:13',
-                                "size": 'xxl',
-                                "aspect_mode": 'cover'
-                            },
-                            {
-                                "type": "button",
-                                "style": 'link',
-                                "color": '#0000FF',
-                                "height": 'sm',
-                                "action": {
-                                    "type": "postback",
-                                    "label": '喜愛東南亞旅遊',
-                                    "uri": "travel,southeast_asia"
-                                }
-
-                            }
-                        ]
-                    }
-
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": 'sm',
-                "contents": [
-                    {
-                        "type": "separator",
-                        "color": "#000000"
-                    },
-                    {
-                        "type": "button",
-                        "style": 'link',
-                        "color": '#000000',
-                        "height": 'md',
-                        "action": {
-                            "type": "postback",
-                            "label": '已完成',
-                            "uri": "travel Done"
-                        }
-
-                    }
-                ]
-            },
-            "styles": {
-                "header": {
-                    "backgroundColor": "#DDDDDD",
-                    "separatorColor": "#000000",
-                    "separator": true
-                },
-                "hero": {
-                    "backgroundColor": "#FF44AA",
-                    "separatorColor": "#000000",
-                    "separator": true
-                },
-                "body": {
-                    "backgroundColor": "#FFFFFF",
-                    "separatorColor": "#000000",
-                    "separator": true
-                },
-                "footer": {
-                    "backgroundColor": "#CCEEFF",
-                    "separatorColor": "#000000",
-                    "separator": true
-                }
-            }
-        }
-
-        var bubble01 = {
+        var bubble01 = var bubble01 = {
             "type": "bubble",
             "header": {
                 "type": "box",
@@ -250,8 +250,8 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                 "type": "image",
                 "url": 'https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/tom-barrett-318954-unsplash.jpg',
                 "size": "full",
-                "aspect_ratio": '20:13',
-                "aspect_mode": 'cover',
+                "aspectRatio": '20:13',
+                "aspectMode": 'cover',
                 "action": {
                     "type": "uri",
                     "label": "View details",
@@ -279,9 +279,9 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                             {
                                 "type": "image",
                                 "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/taj-mahal-1209004_1920.jpg",
-                                "aspect_ratio": '20:13',
+                                "aspectRatio": '20:13',
                                 "size": 'xxl',
-                                "aspect_mode": 'cover'
+                                "aspectMode": 'cover'
                             },
                             {
                                 "type": "button",
@@ -291,7 +291,7 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                                 "action": {
                                     "type": "postback",
                                     "label": '喜愛南北亞旅遊',
-                                    "uri": "travel,south_asia"
+                                    "data": "travel,south_asia"
                                 }
 
                             },
@@ -302,9 +302,9 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                             {
                                 "type": "image",
                                 "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/0a16fa82381c4bb981d07841408329f1_s.jpg",
-                                "aspect_ratio": '20:13',
+                                "aspectRatio": '20:13',
                                 "size": 'xxl',
-                                "aspect_mode": 'cover'
+                                "aspectMode": 'cover'
                             },
                             {
                                 "type": "button",
@@ -314,7 +314,7 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                                 "action": {
                                     "type": "postback",
                                     "label": '喜愛中國旅遊',
-                                    "uri": "travel,china"
+                                    "data": "travel,china"
                                 }
 
                             },
@@ -325,9 +325,9 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                             {
                                 "type": "image",
                                 "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev/images/milan-cathedral-2704544_1280.jpg",
-                                "aspect_ratio": '20:13',
+                                "aspectRatio": '20:13',
                                 "size": 'xxl',
-                                "aspect_mode": 'cover'
+                                "aspectMode": 'cover'
                             },
                             {
                                 "type": "button",
@@ -337,7 +337,7 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                                 "action": {
                                     "type": "postback",
                                     "label": '喜愛歐洲線旅遊',
-                                    "uri": "travel,Europe"
+                                    "data": "travel,Europe"
                                 }
 
                             },
@@ -348,9 +348,9 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                             {
                                 "type": "image",
                                 "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev//images/buildings-2297210_1920.jpg",
-                                "aspect_ratio": '20:13',
+                                "aspectRatio": '20:13',
                                 "size": 'xxl',
-                                "aspect_mode": 'cover'
+                                "aspectMode": 'cover'
                             },
                             {
                                 "type": "button",
@@ -360,7 +360,7 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                                 "action": {
                                     "type": "postback",
                                     "label": '喜愛美國加拿大旅遊',
-                                    "uri": "travel,America_Canada"
+                                    "data": "travel,America_Canada"
                                 }
 
                             },
@@ -371,9 +371,9 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                             {
                                 "type": "image",
                                 "url": "https://raw.githubusercontent.com/housekeepbao/flight_bot/dev//images/new-zealand-2089838_1920.jpg",
-                                "aspect_ratio": '20:13',
+                                "aspectRatio": '20:13',
                                 "size": 'xxl',
-                                "aspect_mode": 'cover'
+                                "aspectMode": 'cover'
                             },
                             {
                                 "type": "button",
@@ -383,7 +383,7 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                                 "action": {
                                     "type": "postback",
                                     "label": '喜愛紐西蘭、澳洲旅遊',
-                                    "uri": "travel,Oceania"
+                                    "data": "travel,Oceania"
                                 }
 
                             }
@@ -409,7 +409,7 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                         "action": {
                             "type": "postback",
                             "label": '已完成',
-                            "uri": "travel Done"
+                            "data": "travel Done"
                         }
 
                     }
