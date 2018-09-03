@@ -158,8 +158,9 @@ module.exports.getFlexTemplate = function (userKey) {
                             "flex": 0
                         },
                         {
-                            "type": "36,900元起",
-                            "wrap": "True",
+                            "type": "text",
+                            "text": "36,900元起",
+                            "wrap": true,
                             "color": '#666666',
                             "size": 'md',
                             "flex": 5
@@ -185,8 +186,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "5天4夜",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "5天4夜",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -205,9 +207,10 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "size": 'md',
                                     "flex": 0
                                 },
-                                {
-                                    "type": "日本",
-                                    "wrap": "True",
+                                {   
+                                    "type": "text",
+                                    "text": "日本",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -227,8 +230,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "北陸.小松.立山.名古屋",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "北陸.小松.立山.名古屋",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -248,8 +252,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "桃園機場",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "桃園機場",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -269,8 +274,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "長榮航空",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "長榮航空",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -290,8 +296,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "16人",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "16人",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -411,8 +418,9 @@ module.exports.getFlexTemplate = function (userKey) {
                             "flex": 0
                         },
                         {
-                            "type": "135,900元起",
-                            "wrap": "True",
+                            "type": "text",
+                            "text": "135,900元起",
+                            "wrap": true,
                             "color": '#666666',
                             "size": 'md',
                             "flex": 5
@@ -438,8 +446,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "10天",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "10天",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -459,8 +468,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "奧地利",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "奧地利",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -480,8 +490,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "維也納 Vienna",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "維也納 Vienna",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -501,8 +512,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "桃園機場",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "桃園機場",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -522,8 +534,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "中華航空",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "中華航空",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
@@ -543,8 +556,9 @@ module.exports.getFlexTemplate = function (userKey) {
                                     "flex": 0
                                 },
                                 {
-                                    "type": "16人",
-                                    "wrap": "True",
+                                    "type": "text",
+                                    "text": "16人",
+                                    "wrap": true,
                                     "color": '#666666',
                                     "size": 'md',
                                     "flex": 5
