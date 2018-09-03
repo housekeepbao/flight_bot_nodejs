@@ -184,11 +184,6 @@ function teachingStep(userKey) {
                 },
                 {
                     type: "message",
-                    label: "喜好問卷",
-                    text: '喜好問卷',
-                },
-                {
-                    type: "message",
                     label: "客服問卷",
                     text: '客服問卷',
                 },
