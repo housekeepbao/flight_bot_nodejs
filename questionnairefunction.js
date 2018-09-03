@@ -449,9 +449,8 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
         var Flex_Message = {
             "type": "flex",
             "altText": "旅遊問卷 Flex",
-            "contents": {
-                carousel_Flex
-            }
+            "contents": carousel_Flex
+            
         }
         lineapi.pushText(userKey, Flex_Message)
     }
