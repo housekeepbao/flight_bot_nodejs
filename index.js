@@ -120,8 +120,12 @@ function handleText(message, event) {
       case ("Flex"):
         adsfunction.getFlexTemplate(userKey)
         break;
-      default:
-        dialogFunction.otherSession(event)
+    }
+    if(message.text.indexOf("[menu]") != -1) {
+      menufunction.menuFeature(event)
+    }
+    else{
+      dialogFunction.otherSession(event)
     }
   }
 

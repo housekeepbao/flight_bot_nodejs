@@ -31,7 +31,7 @@ module.exports.getLineUserProfile = function (userId, callback) {
     });
 }
 
-module.exports.createLineUser = function (userId, callback) {
+module.exports.createLineUser = function (userId,genderValue,emailValue,phoneNumberValue, callback) {
     this.getLineUserProfile(userId, function (profile) {
         console.log("createLineUser", profile)
         console.log("this.server:", server)
