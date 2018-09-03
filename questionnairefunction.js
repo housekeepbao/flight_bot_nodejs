@@ -14,7 +14,7 @@ module.exports.saveFavoriteQuestionnaire = function (user_key, favorite_list) {
 }
 module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSessionDict) {
     if (!(userKey in askUserFavoriteSessionDict)) {
-        askUserFavoriteSessionDict[user_key]=["ask_session_start"] 
+        askUserFavoriteSessionDict[userKey]=["ask_session_start"] 
     }
     if (askUserFavoriteSessionDict[userKey].length >= 1) {
         var tickets_text = "我們關心您的喜好，以下是詢問您喜歡的旅遊類型，未來也會推播相關的旅遊情報給您喔"

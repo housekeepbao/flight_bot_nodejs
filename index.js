@@ -107,6 +107,9 @@ function handleText(message, event) {
       }
     })
   }
+  else if ("喜好問卷" in message.text) {
+    askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
+  }
   else {
     dialogFunction.otherSession(event)
   }
