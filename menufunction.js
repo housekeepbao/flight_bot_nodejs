@@ -200,7 +200,7 @@ function teachingStep(userKey) {
             ],
         }
     }
-    push_message(userKey, [messageText, buttonsTemplateMessage])
+    lineapi.pushText(userKey, [messageText, buttonsTemplateMessage])
 }
 
 function memberInfo(userKey) {
