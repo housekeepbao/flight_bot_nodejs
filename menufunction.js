@@ -69,7 +69,7 @@ module.exports.getRichId = function (userKey) {
                 "action": {
                     "type": "postback",
                     "label":'會員資料',
-                    "text": "[menu]會員資料測試",
+                    "text": "[menu]會員資料",
                     "data": "menu,member_info"
                 }
             },

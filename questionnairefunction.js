@@ -12,11 +12,11 @@ module.exports.saveFavoriteQuestionnaire = function (user_key, favorite_list) {
         'Content-Type': "application/json",
     }
 }
-module.exports.askUserFavoriteTravel = function (user_key, ask_user_favorite_session_dict) {
-    if (ask_user_favorite_session_dict.indexOf(user_key) == -1) {
-        ask_user_favorite_session_dict.push({ user_key: ["ask_session_start"] })
+module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSessionDict) {
+    if (!(userKey in askUserFavoriteSessionDict)) {
+        askUserFavoriteSessionDict[user_key]=["ask_session_start"] 
     }
-    if (ask_user_favorite_session_dict[user_key].length >= 1) {
+    if (askUserFavoriteSessionDict[userKey].length >= 1) {
         var tickets_text = "我們關心您的喜好，以下是詢問您喜歡的旅遊類型，未來也會推播相關的旅遊情報給您喔"
         var push_tickets_info = { type: 'text', text: tickets_text };
         var message_slicker = {
@@ -24,7 +24,7 @@ module.exports.askUserFavoriteTravel = function (user_key, ask_user_favorite_ses
             packageId: '1',
             stickerId: '407'
         }
-        lineapi.pushText(user_key, [push_tickets_info, message_slicker])
+        lineapi.pushText(userKey, [push_tickets_info, message_slicker])
         var bubble = {
             "type": "bubble",
             "header": {
@@ -453,7 +453,7 @@ module.exports.askUserFavoriteTravel = function (user_key, ask_user_favorite_ses
                 carousel_Flex
             }
         }
-        lineapi.pushText(user_key,Flex_Message)
+        lineapi.pushText(userKey,Flex_Message)
     }
-    return ask_user_favorite_session_dict
+    return askUserFavoriteSessionDict
 }
