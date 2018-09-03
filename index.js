@@ -117,6 +117,9 @@ function handleText(message, event) {
       case ("廣告"):
         adsfunction.getAdsInfoCarousel(userKey)
         break;
+      case ("Flex"):
+        adsfunction.getFlexTemplate(userKey)
+        break;
       default:
         dialogFunction.otherSession(event)
     }

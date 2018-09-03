@@ -148,154 +148,154 @@ module.exports.getFlexTemplate = function (userKey) {
                 {
                     "type": "box",
                     "layout": "baseline",
-                    "spacing":'sm',
+                    "spacing": 'sm',
                     "contents": [
                         {
                             "type": "text",
-                            "text":'售價:  ',
-                            "color":'#aaaaaa',
-                            "size":'md',
-                            "flex":0
+                            "text": '售價:  ',
+                            "color": '#aaaaaa',
+                            "size": 'md',
+                            "flex": 0
                         },
                         {
                             "type": "36,900元起",
-                            "wrap":"True",
-                            "color":'#666666',
-                            "size":'md',
-                            "flex":5
+                            "wrap": "True",
+                            "color": '#666666',
+                            "size": 'md',
+                            "flex": 5
                         }
                     ]
                 },
                 {
                     "type": "box",
                     "layout": "vertical",
-                    "margin":'lg',
-                    "spacing":'sm',
+                    "margin": 'lg',
+                    "spacing": 'sm',
                     "contents": [
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'天 數:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '天 數:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "5天4夜",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'國家:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '國家:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "日本",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'地區:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '地區:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "北陸.小松.立山.名古屋",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'出發地:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '出發地:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "桃園機場",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'航空公司:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '航空公司:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "長榮航空",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'最少成行人數:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '最少成行人數:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "16人",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         }
                     ]
@@ -316,7 +316,7 @@ module.exports.getFlexTemplate = function (userKey) {
                     "action": {
                         "type": "uri",
                         "label": '出發日及報名',
-                        "uri":'http://b2c.tahsintour.com.tw/page/tahsin/grolist.aspx?homepage=180425JKK5BR-A'
+                        "uri": 'http://b2c.tahsintour.com.tw/page/tahsin/grolist.aspx?homepage=180425JKK5BR-A'
                     }
 
                 },
@@ -332,7 +332,7 @@ module.exports.getFlexTemplate = function (userKey) {
                     "action": {
                         "type": "uri",
                         "label": '查看更多相關行程',
-                        "uri":'http://b2c.tahsintour.com.tw/page/tahsin/grolist.aspx?area=%E6%9D%B1%E5%8C%97%E4%BA%9E&city=%E5%8C%97%E9%99%B8'
+                        "uri": 'http://b2c.tahsintour.com.tw/page/tahsin/grolist.aspx?area=%E6%9D%B1%E5%8C%97%E4%BA%9E&city=%E5%8C%97%E9%99%B8'
                     }
 
                 }
@@ -401,154 +401,154 @@ module.exports.getFlexTemplate = function (userKey) {
                 {
                     "type": "box",
                     "layout": "baseline",
-                    "spacing":'sm',
+                    "spacing": 'sm',
                     "contents": [
                         {
                             "type": "text",
-                            "text":'售價:  ',
-                            "color":'#aaaaaa',
-                            "size":'md',
-                            "flex":0
+                            "text": '售價:  ',
+                            "color": '#aaaaaa',
+                            "size": 'md',
+                            "flex": 0
                         },
                         {
                             "type": "135,900元起",
-                            "wrap":"True",
-                            "color":'#666666',
-                            "size":'md',
-                            "flex":5
+                            "wrap": "True",
+                            "color": '#666666',
+                            "size": 'md',
+                            "flex": 5
                         }
                     ]
                 },
                 {
                     "type": "box",
                     "layout": "vertical",
-                    "margin":'lg',
-                    "spacing":'sm',
+                    "margin": 'lg',
+                    "spacing": 'sm',
                     "contents": [
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'天 數:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '天 數:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "10天",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'國家:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '國家:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "奧地利",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'地區:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '地區:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "維也納 Vienna",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'出發地:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '出發地:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "桃園機場",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'航空公司:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '航空公司:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "中華航空",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         },
                         {
                             "type": "box",
                             "layout": "baseline",
-                            "spacing":'sm',
+                            "spacing": 'sm',
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text":'最少成行人數:  ',
-                                    "color":'#aaaaaa',
-                                    "size":'md',
-                                    "flex":0
+                                    "text": '最少成行人數:  ',
+                                    "color": '#aaaaaa',
+                                    "size": 'md',
+                                    "flex": 0
                                 },
                                 {
                                     "type": "16人",
-                                    "wrap":"True",
-                                    "color":'#666666',
-                                    "size":'md',
-                                    "flex":5
-                                } 
+                                    "wrap": "True",
+                                    "color": '#666666',
+                                    "size": 'md',
+                                    "flex": 5
+                                }
                             ]
                         }
                     ]
@@ -569,7 +569,7 @@ module.exports.getFlexTemplate = function (userKey) {
                     "action": {
                         "type": "uri",
                         "label": '出發日及報名',
-                        "uri":'https://travel.liontravel.com/order/choose?NormGroupID=58ea86f3-576a-460d-9fd2-cc111437d14d&GroupID=18EA816CI-T&Status=1'
+                        "uri": 'https://travel.liontravel.com/order/choose?NormGroupID=58ea86f3-576a-460d-9fd2-cc111437d14d&GroupID=18EA816CI-T&Status=1'
                     }
 
                 },
@@ -585,7 +585,7 @@ module.exports.getFlexTemplate = function (userKey) {
                     "action": {
                         "type": "uri",
                         "label": '查看更多相關行程',
-                        "uri":'https://travel.liontravel.com/detail?NormGroupID=58ea86f3-576a-460d-9fd2-cc111437d14d&GroupID=18EA816CI-T'
+                        "uri": 'https://travel.liontravel.com/detail?NormGroupID=58ea86f3-576a-460d-9fd2-cc111437d14d&GroupID=18EA816CI-T'
                     }
 
                 }
