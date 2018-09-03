@@ -109,6 +109,9 @@ function handleText(message, event) {
       }
     })
   }
+  else if (message.text.indexOf("[menu]") != -1) {
+    menufunction.menuFeature(event)
+  }
   else {
     switch (message.text) {
       case ("喜好問卷"):
@@ -120,12 +123,8 @@ function handleText(message, event) {
       case ("Flex"):
         adsfunction.getFlexTemplate(userKey)
         break;
-    }
-    if(message.text.indexOf("[menu]") != -1) {
-      menufunction.menuFeature(event)
-    }
-    else{
-      dialogFunction.otherSession(event)
+      default:
+        dialogFunction.otherSession(event)
     }
   }
 
