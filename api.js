@@ -31,7 +31,7 @@ module.exports.getLineUserProfile = function (userId, callback) {
     });
 }
 
-module.exports.createLineUser = function (userId,genderValue,emailValue,phoneNumberValue, callback) {
+module.exports.createLineUser = function (userId,genderValue,emailValue,phoneNumberValue,age, callback) {
     this.getLineUserProfile(userId, function (profile) {
         console.log("createLineUser", profile)
         console.log("this.server:", server)
@@ -39,11 +39,11 @@ module.exports.createLineUser = function (userId,genderValue,emailValue,phoneNum
             userId: userId,
             name: profile.displayName,
             pictureUrl: profile.pictureUrl,
-            gender: false,
-            email: "",
-            phoneNumber: 0,
+            gender: genderValue,
+            email: emailValue,
+            phoneNumber: phoneNumberValue,
             favorite: "",
-            age: 0,
+            age: age,
             providerId: config.channelId,
             chatRoomId: config.channelId + '_' + userId,
             isBotMode: true,

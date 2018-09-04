@@ -4,11 +4,11 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     console.log('#askPaperMemberInfo function')
     var userKey = event.source.userId
     var isFinish = false
-    if(!event.message){
-        messageText = "None" 
+    if (!event.message) {
+        messageText = "None"
     }
     else {
-        var messageText = event.message.text  
+        var messageText = event.message.text
     }
     if (!(userKey in askMemberInfoSessionDict)) {
         askMemberInfoSessionDict[userKey] = ["ask_session_start"]
@@ -77,7 +77,51 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     }
     else if (askMemberInfoSessionDict[userKey].length == 4) {
         if (messageText.indexOf("男性") != -1 || messageText.indexOf("女性") != -1) {
-            tmpList.push(messageText)
+            switch (messageText) {
+                case ("男性"):
+                    tmpList.push("true")
+                    break;
+                case ("女性"):
+                    tmpList.push("false")
+                    break;
+            }
+            var ticketsText = "請問你的年齡 例如: 18"
+            var pushText = { type: 'text', text: ticketsText };
+            askMemberInfoSessionDict[userKey] = tmpList
+        }
+        else {
+            var ticketsText = "輸入的性別有錯，請重新輸入"
+            var gender_button = {
+                type: "template",
+                altText: '會員資料調查',
+                template: {
+                    type: "buttons",
+                    title: '請問您的性別',
+                    text: '請選擇您的性別',
+                    actions: [
+                        {
+                            type: "postback",
+                            label: "男性",
+                            text: '男性',
+                            data: "male"
+                        },
+                        {
+                            type: "postback",
+                            label: "女性",
+                            text: '女性',
+                            data: "female"
+                        },
+                    ],
+                }
+            }
+            var pushText = { type: 'text', text: ticketsText };
+            lineapi.pushText(userKey, [pushText,gender_butto])
+
+        }
+    }
+    else if (askMemberInfoSessionDict[userKey].length == 5) {
+        var re = /[0-9]?[0-9]/
+        if (re.test(messageText)) {
             var ticketsText = "會員資料已輸入完畢。"
             var pushText = { type: 'text', text: ticketsText };
             askMemberInfoSessionDict[userKey] = tmpList
@@ -91,14 +135,15 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             isFinish = true
         }
         else {
-            var ticketsText = "輸入的電子信箱有誤，請重新輸入"
+            var ticketsText = "輸入年齡範圍有錯，年齡應介於 0~99，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
             lineapi.pushText(userKey, pushText)
         }
+
     }
     else {
         console.log('askPaperMemberInfo enter other else ')
-        console.log('try askMemberInfoSessionDict[userKey].length == 1 is  ',askMemberInfoSessionDict[userKey].length == 1)
+        console.log('try askMemberInfoSessionDict[userKey].length == 1 is  ', askMemberInfoSessionDict[userKey].length == 1)
     }
     callback(askMemberInfoSessionDict, isFinish)
 }

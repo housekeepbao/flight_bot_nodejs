@@ -182,8 +182,8 @@ function handlePostback(event) {
       askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
     }
     else {
-      tmpList = askUserFavoriteSessionDict[userKey]
-      contentTmp = event.postback.data.split(",")
+      var tmpList = askUserFavoriteSessionDict[userKey]
+      var contentTmp = event.postback.data.split(",")
       console.log("favorite is " + contentTmp[-1])
       tmpList.push(contentTmp[-1])
       askUserFavoriteSessionDict[userKey] = tmpList
