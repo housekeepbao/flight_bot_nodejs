@@ -304,7 +304,7 @@ function memberInfo(userKey) {
                                     },
                                     {
                                         "type": "text",
-                                        "text": memberInfo.phoneNumber,
+                                        "text": memberInfo.phoneNumber.toString(),
                                         "wrap": true,
                                         "color": '#666666',
                                         "size": 'md',

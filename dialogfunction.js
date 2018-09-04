@@ -22,7 +22,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         tmpList.push("ask_session_start")
         askMemberInfoSessionDict[userKey] = tmpList
         var pushText = { type: 'text', text: ticketsText };
-        lineapi.pushText(userKey, pushText)
+        lineapi.pushText(userKey, pushText).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
     }
     else if (askMemberInfoSessionDict[userKey].length == 2) {
         var re = /\d+/
@@ -36,7 +36,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             var ticketsText = "輸入的電話號碼有錯，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
         }
-        lineapi.pushText(userKey, pushText)
+        lineapi.pushText(userKey, pushText).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
 
     }
     else if (askMemberInfoSessionDict[userKey].length == 3) {
@@ -67,12 +67,12 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                 }
             }
             askMemberInfoSessionDict[userKey] = tmpList
-            lineapi.pushText(userKey, gender_button)
+            lineapi.pushText(userKey, gender_button).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
         }
         else {
             var ticketsText = "輸入的電子信箱有誤，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
-            lineapi.pushText(userKey, pushText)
+            lineapi.pushText(userKey, pushText).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
         }
     }
     else if (askMemberInfoSessionDict[userKey].length == 4) {
@@ -87,8 +87,8 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             }
             var ticketsText = "請問你的年齡 例如: 18"
             var pushText = { type: 'text', text: ticketsText };
-            lineapi.pushText(userKey, pushText)
             askMemberInfoSessionDict[userKey] = tmpList
+            lineapi.pushText(userKey, pushText).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
         }
         else {
             var ticketsText = "輸入的性別有錯，請重新輸入"
@@ -116,7 +116,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                 }
             }
             var pushText = { type: 'text', text: ticketsText };
-            lineapi.pushText(userKey, [pushText,gender_butto])
+            lineapi.pushText(userKey, [pushText,gender_butto]).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
 
         }
     }
@@ -131,14 +131,14 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
                 packageId: '1',
                 stickerId: '125'
             }
-            lineapi.pushText(userKey, [pushText, messageSlicker])
             askMemberInfoSessionDict[userKey][0] = 'ask_session_close'
             isFinish = true
+            lineapi.pushText(userKey, [pushText, messageSlicker]).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
         }
         else {
             var ticketsText = "輸入年齡範圍有錯，年齡應介於 0~99，請重新輸入"
             var pushText = { type: 'text', text: ticketsText };
-            lineapi.pushText(userKey, pushText)
+            lineapi.pushText(userKey, pushText).then(()=>{callback(askMemberInfoSessionDict, isFinish)})
         }
 
     }
@@ -146,7 +146,6 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         console.log('askPaperMemberInfo enter other else ')
         console.log('try askMemberInfoSessionDict[userKey].length == 1 is  ', askMemberInfoSessionDict[userKey].length == 1)
     }
-    callback(askMemberInfoSessionDict, isFinish)
 }
 
 
