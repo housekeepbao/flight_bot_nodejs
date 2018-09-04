@@ -348,7 +348,7 @@ function memberInfo(userKey) {
                                     },
                                     {
                                         "type": "text",
-                                        "text": memberInfo.age,
+                                        "text": "隱藏",
                                         "wrap": true,
                                         "color": '#666666',
                                         "size": 'md',

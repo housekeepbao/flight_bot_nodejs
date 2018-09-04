@@ -199,7 +199,7 @@ function handlePostback(event) {
       console.log("favorite is " + contentTmp[-1])
       tmpList.push(contentTmp[-1])
       askUserFavoriteSessionDict[userKey] = tmpList
-      messageTextTmp = "選擇喜好旅遊類型:" +
+      var messageTextTmp = "選擇喜好旅遊類型:" +
         travelKindDict[contentTmp[-1]] + "\n\n"
       messageTextTmp += "可繼續點選喜好的旅遊類型，也可點擊完成問卷按鈕"
       var message = { type: 'text', text: messageTextTmp };
