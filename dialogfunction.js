@@ -87,6 +87,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
             }
             var ticketsText = "請問你的年齡 例如: 18"
             var pushText = { type: 'text', text: ticketsText };
+            lineapi.pushText(userKey, pushText)
             askMemberInfoSessionDict[userKey] = tmpList
         }
         else {
@@ -120,8 +121,8 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         }
     }
     else if (askMemberInfoSessionDict[userKey].length == 5) {
-        var re = /[0-9]?[0-9]/
-        if (re.test(messageText)) {
+        var re = /\d/
+        if (re.test(messageText) && Number(messageText) >= 0 && Number(messageText) <= 108) {
             var ticketsText = "會員資料已輸入完畢。"
             var pushText = { type: 'text', text: ticketsText };
             askMemberInfoSessionDict[userKey] = tmpList
