@@ -132,45 +132,104 @@ function handleText(message, event) {
   console.log('#MessageEvent#')
   console.log(event)
   var userKey = event.source.userId
-  if ((userKey in askMemberInfoSessionDict) && askMemberInfoSessionDict[userKey][0] === "ask_session_start") {
-    dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
-      if (isFinish != true) {
-        askMemberInfoSessionDict = sessionDict
+  api.getLineUser(event.source.userId, function (user) {
+    console.log('user data', user)
+    if (user == null) {
+      return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: '您尚未加入，請重新加入或解除封鎖'
+      });
+    }
+    usersManager[user.userId] = user
+    if (usersManager[user.userId].isBotMode) {
+      if ((userKey in askMemberInfoSessionDict) && askMemberInfoSessionDict[userKey][0] === "ask_session_start") {
+        dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
+          if (isFinish != true) {
+            askMemberInfoSessionDict = sessionDict
+          }
+          else {
+            askMemberInfoSessionDict = sessionDict
+            askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
+            askMemberInfoSessionDict[userKey]
+            api.createLineUser(userKey, askMemberInfoSessionDict[userKey][4], askMemberInfoSessionDict[userKey][3], askMemberInfoSessionDict[userKey][2], askMemberInfoSessionDict[userKey][5], function (response) {
+              console.log("response is", response)
+            });
+          }
+        })
+      }
+      else if (message.text.indexOf("[menu]") != -1) {
+        var tmpList = ["ask_session_start"]
+        askMemberInfoSessionDict[user.userId] = tmpList
+        menufunction.menuFeature(event, askMemberInfoSessionDict)
       }
       else {
-        askMemberInfoSessionDict = sessionDict
-        askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
-        askMemberInfoSessionDict[userKey]
-        api.createLineUser(userKey, askMemberInfoSessionDict[userKey][4], askMemberInfoSessionDict[userKey][3], askMemberInfoSessionDict[userKey][2], askMemberInfoSessionDict[userKey][5], function (response) {
-          console.log("response is", response)
-        });
+        switch (message.text) {
+          case ("喜好問卷"):
+            askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
+            break;
+          case ("廣告"):
+            adsfunction.getAdsInfoCarousel(userKey)
+            break;
+          case ("Flex"):
+            adsfunction.getFlexTemplate(userKey)
+            break;
+          case "客服":
+          case ("請求客服"):
+            user.type = "user"
+            socketClient.emit(events.userJoined, user);
+            //save message to db
+            api.storeChatMessage(event.message.text, usersManager[user.userId].chatRoomId, false,
+              usersManager[user.userId].userId, null, function () {
+                console.log('event.message.text inserted', event.message.text)
+              });
+            return client.replyMessage(event.replyToken, {
+              type: 'text',
+              text: "轉接客服中.."
+            });
+            break;
+          default:
+            api.storeChatMessage(event.message.text, usersManager[user.userId].chatRoomId, true,
+              usersManager[user.userId].userId, null, function () {
+                console.log('event.message.text inserted', event.message.text)
+              });
+            dialogFunction.otherSession(event)
+        }
       }
-    })
-  }
-  else if (message.text.indexOf("[menu]") != -1) {
-    var tmpList = ["ask_session_start"]
-    askMemberInfoSessionDict[user.userId] = tmpList
-    menufunction.menuFeature(event, askMemberInfoSessionDict)
-  }
-  else {
-    switch (message.text) {
-      case ("喜好問卷"):
-        askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
-        break;
-      case ("廣告"):
-        adsfunction.getAdsInfoCarousel(userKey)
-        break;
-      case ("Flex"):
-        adsfunction.getFlexTemplate(userKey)
-        break;
-      case ("請求客服"):
-        socketIoFunction.socketChatConnect(event)
-        break;
-      default:
-        dialogFunction.otherSession(event)
     }
-  }
+    else {
+      console.log('客服模式 message:', event.message.text);
+      switch (event.message.text) {
+        case "斷線":
+        case "離開":
+        case "結束":
+        case "結束客服":
+          // disconnect this user
 
+          socketClient.emit(events.userLeft, user);
+          break;
+        default:
+
+          console.log('chatRoomManager:', chatRoomManager[user.userId])
+
+          //SEND MESSAGE TO CUSTOMER SERVICE
+          socketClient.emit(events.newMessage, {
+            type: "user",
+            providerId: user.providerId,
+            userId: user.userId,
+            customerServiceId: chatRoomManager[user.userId],
+            chatRoomId: chatRoomManager[user.userId].chatRoomId,
+            name: user.name,
+            message: event.message.text
+          });
+      }
+
+      //save message to db
+      api.storeChatMessage(event.message.text, usersManager[user.userId].chatRoomId, false,
+        usersManager[user.userId].userId, null, function () {
+          console.log('event.message.text inserted', event.message.text)
+        });
+    }
+  })
 }
 
 function handleImage(message, event) {

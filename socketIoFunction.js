@@ -18,6 +18,10 @@ var usersManager = {};
 var chatRoomManager = {}
 //=====================================================
 const api = require('./api.js')
+const config = require('./lineconfig.js').lineAccoessTokenConfig
+
+// create LINE SDK client
+const client = new line.Client(config);
 
 module.exports = {}
 module.exports.socketChatConnect = function (event) {
