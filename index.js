@@ -141,6 +141,11 @@ function handleText(message, event) {
       });
     }
     usersManager[user.userId] = user
+    chatRoomManager[user.userId] = {
+      userId: user.userId,
+      customerServiceId: user.customerServiceId,
+      chatRoomId: user.chatRoomId,
+    }
     if (usersManager[user.userId].isBotMode) {
       if ((userKey in askMemberInfoSessionDict) && askMemberInfoSessionDict[userKey][0] === "ask_session_start") {
         dialogFunction.askPaperMemberInfo(askMemberInfoSessionDict, event, function (sessionDict, isFinish) {
