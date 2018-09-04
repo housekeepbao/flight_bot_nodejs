@@ -106,6 +106,10 @@ function handleText(message, event) {
       else {
         askMemberInfoSessionDict = sessionDict
         askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
+        askMemberInfoSessionDict[userKey]
+        api.createLineUser(userKey,askMemberInfoSessionDict[userKey][4],askMemberInfoSessionDict[userKey][3],askMemberInfoSessionDict[userKey][2],function(response){
+            console.log("response is",response)
+        })
       }
     })
   }

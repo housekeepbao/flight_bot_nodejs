@@ -76,7 +76,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
         }
     }
     else if (askMemberInfoSessionDict[userKey].length == 4) {
-        if (messageText.indexOf("男性") != -1 || messageText.indexOf("女性")) {
+        if (messageText.indexOf("男性") != -1 || messageText.indexOf("女性") != -1) {
             tmpList.push(messageText)
             var ticketsText = "會員資料已輸入完畢。"
             var pushText = { type: 'text', text: ticketsText };
