@@ -196,10 +196,6 @@ module.exports.askUserFavoriteTravel = function (userKey, askUserFavoriteSession
                     "spacing": "sm",
                     "contents": [
                         {
-                            "type": "separator",
-                            "color": "#000000"
-                        },
-                        {
                             "type": "button",
                             "style": "link",
                             "color": "#000000",

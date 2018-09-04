@@ -32,6 +32,18 @@ var askUserFavoriteSessionDict = {};
 var typeOfReturn = "type = return"
 var typeOfDepart = "type = depart"
 var datetimeType = { typeOfDepart: 'depart_date', typeOfReturn: 'return_date' }
+
+const travelKindDict = {
+  'china': '中國旅遊',
+  'Oceania': '紐澳旅遊',
+  'America_Canada': '美加旅遊',
+  'Europe': '歐洲旅遊',
+  'south_asia': '南北亞旅遊',
+  'southeast_asia': '東南亞旅遊',
+  'Central_Eastern_Africa': '中東非旅遊',
+  'Cruiseship': '郵輪旅遊',
+  'JP_Korea': '日韓旅遊',
+  'Islands': '島嶼度假'}
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
