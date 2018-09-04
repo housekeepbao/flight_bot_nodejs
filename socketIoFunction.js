@@ -18,6 +18,7 @@ var usersManager = {};
 var chatRoomManager = {}
 //=====================================================
 const api = require('./api.js')
+const line = require('@line/bot-sdk');
 const config = require('./lineconfig.js').lineAccoessTokenConfig
 
 // create LINE SDK client
