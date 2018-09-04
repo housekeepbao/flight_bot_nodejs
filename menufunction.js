@@ -115,7 +115,7 @@ module.exports.getRichId = function (userKey) {
         });
     })
 }
-module.exports.menuFeature = function (event) {
+module.exports.menuFeature = function (event,askMemberInfoSessionDict) {
     var userKey = event.source.userId
     api.getLineUserProfile(userKey, function (user) {
         switch (event.message.text) {

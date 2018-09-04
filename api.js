@@ -85,6 +85,22 @@ module.exports.sendPushMessage = function (token, userId, msg, customerServiceNa
             console.log('sent message failed', err)
         });
 }
+
+module.exports.storeChatMessage = function(message, roomId, isChatBotMode, sender, recipient , callback) {
+    axios.post(server + '/chatmessages/', {
+        message: message,
+        roomId: roomId,
+        isChatBotMode: isChatBotMode,
+        sender: sender,
+        recipient: recipient
+    }).then(function (response) {
+        console.log('storeChatMessage', response.data)
+        callback(response.data)
+    }).catch(function (error){
+        console.log('storeChatMessage error ', error)
+    })
+}
+
 module.exports.isFirstLogin = function (user_key,callback) {
     axios.get(this.server + '/lineusers/userid/' + user_key, {
         params: {}

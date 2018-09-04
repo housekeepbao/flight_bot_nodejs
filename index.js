@@ -23,7 +23,7 @@ const lineapi = require('./lineapi.js')
 const api = require('./api.js')
 const menufunction = require('./menufunction.js')
 const adsfunction = require('./adsfunction.js')
-
+const socketIoFunction = require('./socketIoFunction.js')
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
@@ -33,6 +33,25 @@ var typeOfReturn = "type = return"
 var typeOfDepart = "type = depart"
 var datetimeType = { typeOfDepart: 'depart_date', typeOfReturn: 'return_date' }
 
+//======================socket=========================
+var events = {
+  "newMessage": "new message",
+  "typing": "typing",
+  "stopTyping": "stop typing",
+  "disconnect": "disconnect",
+  "connection": "connection",
+  "userLeft": "user left",
+  "userJoined": "user joined",
+  "customerServiceJoined": "customer service joined",
+  "customerServiceLeft": "customer service left",
+  "pickUp": "pick up",
+  "resumeBotMode": "resume bot mode"
+}
+var socketClient = require('socket.io-client')('https://www.flightgoai-service.com:9103');
+var usersManager = {};
+var chatRoomManager = {}
+//=====================================================
+//======================parameter======================
 const travelKindDict = {
   'china': '中國旅遊',
   'Oceania': '紐澳旅遊',
@@ -43,7 +62,10 @@ const travelKindDict = {
   'Central_Eastern_Africa': '中東非旅遊',
   'Cruiseship': '郵輪旅遊',
   'JP_Korea': '日韓旅遊',
-  'Islands': '島嶼度假'}
+  'Islands': '島嶼度假'
+}
+//=====================================================
+
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
@@ -119,14 +141,16 @@ function handleText(message, event) {
         askMemberInfoSessionDict = sessionDict
         askUserFavoriteSessionDict = questionnaireFunction.askUserFavoriteTravel(userKey, askUserFavoriteSessionDict)
         askMemberInfoSessionDict[userKey]
-        api.createLineUser(userKey,askMemberInfoSessionDict[userKey][4],askMemberInfoSessionDict[userKey][3],askMemberInfoSessionDict[userKey][2],askMemberInfoSessionDict[userKey][5],function (response) {
-            console.log("response is",response)
+        api.createLineUser(userKey, askMemberInfoSessionDict[userKey][4], askMemberInfoSessionDict[userKey][3], askMemberInfoSessionDict[userKey][2], askMemberInfoSessionDict[userKey][5], function (response) {
+          console.log("response is", response)
         });
       }
     })
   }
   else if (message.text.indexOf("[menu]") != -1) {
-    menufunction.menuFeature(event)
+    var tmpList = ["ask_session_start"]
+    askMemberInfoSessionDict[user.userId] = tmpList
+    menufunction.menuFeature(event, askMemberInfoSessionDict)
   }
   else {
     switch (message.text) {
@@ -138,6 +162,9 @@ function handleText(message, event) {
         break;
       case ("Flex"):
         adsfunction.getFlexTemplate(userKey)
+        break;
+      case ("請求客服"):
+        socketIoFunction.socketChatConnect(event)
         break;
       default:
         dialogFunction.otherSession(event)
@@ -309,7 +336,7 @@ function followEvent(event) {
           })
         }).catch(function (error) { console.log('replayTest error', error) });
       }
-      else{
+      else {
         var messageTextTmp = "Hi " + user.displayName + "\n"
         messageTextTmp += "歡迎回來!!\n\n"
         messageTextTmp += "在你離開的這段日子，我好無聊呢!!\n\n"
