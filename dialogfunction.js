@@ -27,7 +27,7 @@ module.exports.askPaperMemberInfo = function (askMemberInfoSessionDict, event, c
     else if (askMemberInfoSessionDict[userKey].length == 2) {
         var re = /\d+/
         if (re.test(messageText)) {
-            tmpList.push(messageText)
+            tmpList.push(messageText.toString())
             var ticketsText = "請輸入您的電子信箱 例如:mymail@gmail.com"
             var pushText = { type: 'text', text: ticketsText };
             askMemberInfoSessionDict[userKey] = tmpList

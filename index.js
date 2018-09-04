@@ -297,6 +297,21 @@ function followEvent(event) {
           })
         }).catch(function (error) { console.log('replayTest error', error) });
       }
+      else{
+        var messageTextTmp = "Hi " + user.displayName + "\n"
+        messageTextTmp += "歡迎回來!!\n\n"
+        messageTextTmp += "在你離開的這段日子，我好無聊呢!!\n\n"
+        messageTextTmp += "我是旅遊小幫手:小高。\n\n 我可以幫忙查詢旅遊行程，會員資料等相關問題\n 也可以洽詢真人客服，小高會立即通知真人客服來為您服務喔\n\n"
+        messageTextTmp += "可以從選單內點選如何使用來獲取功能說明喔\n\n"
+        messageTextTmp += "為了提供更好的服務，請先填入以下基本資訊~"
+        var message = { type: 'text', text: messageTextTmp }
+        var messageSlicker = {
+          type: "sticker",
+          packageId: '1',
+          stickerId: '4'
+        }
+        lineapi.replyText(event, [message, messageSlicker])
+      }
     }
     )
   }
