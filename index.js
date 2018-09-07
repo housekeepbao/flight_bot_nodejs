@@ -47,7 +47,7 @@ var events = {
   "pickUp": "pick up",
   "resumeBotMode": "resume bot mode"
 }
-var socketClient = require('socket.io-client')('http://www.flightgoai-service.com:9103/');
+var socketClient = require('socket.io-client')('https://www.flightgoai-service.com:9103/');
 var usersManager = {};
 var chatRoomManager = {}
 //=====================================================
