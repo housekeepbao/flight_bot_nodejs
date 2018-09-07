@@ -47,7 +47,7 @@ var events = {
   "pickUp": "pick up",
   "resumeBotMode": "resume bot mode"
 }
-var socketClient = require('socket.io-client')('https://www.flightgoai-service.com:9103');
+var socketClient = require('socket.io-client')('http://www.flightgoai-service.com:9103/');
 var usersManager = {};
 var chatRoomManager = {}
 //=====================================================
@@ -209,7 +209,10 @@ function handleText(message, event) {
         case "結束":
         case "結束客服":
           // disconnect this user
-
+          api.storeChatMessage(event.message.text, usersManager[user.userId].chatRoomId, true,
+            usersManager[user.userId].userId, null, function () {
+              console.log('event.message.text inserted', event.message.text)
+            });
           socketClient.emit(events.userLeft, user);
           break;
         default:
