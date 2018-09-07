@@ -29,6 +29,7 @@ const socketIoFunction = require('./socketIoFunction.js')
 const app = express();
 var askMemberInfoSessionDict = {};
 var askUserFavoriteSessionDict = {};
+var askUserFavoriteSessionDict = {};
 var typeOfReturn = "type = return"
 var typeOfDepart = "type = depart"
 var datetimeType = { typeOfDepart: 'depart_date', typeOfReturn: 'return_date' }
@@ -163,8 +164,6 @@ function handleText(message, event) {
         })
       }
       else if (message.text.indexOf("[menu]") != -1) {
-        var tmpList = ["ask_session_start"]
-        askMemberInfoSessionDict[user.userId] = tmpList
         menufunction.menuFeature(event, askMemberInfoSessionDict)
       }
       else {
